@@ -10,7 +10,7 @@ body {
 }
 .game_page{
   display: flex;
-  height: 101vh;
+  height: 100vh;
   align-items: center;
   flex-direction: column;
   background: url('./asset/loading/fone.png');
