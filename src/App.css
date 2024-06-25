@@ -1,96 +1,154 @@
 @font-face {
-  font-family: 'PixelFont';
-  src: url('./fonts/Font\ Over.otf') format('truetype');
-  font-weight: normal;
+  font-family: 'Gluten';
+  src: url('./fonts/gluten.ttf') format('truetype');
+  font-weight: 100 900;
   font-style: normal;
 }
 body {
-  background: #1D97A6;
+  font-family: 'Gluten';
+  margin: 0;
 }
 .game_page{
-  margin: 0;
-  padding: 0;
   display: flex;
-  height: 100vh;
+  height: 101vh;
   align-items: center;
   flex-direction: column;
+  background: url('./asset/loading/fone.png');
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .cat_avatar{
-  width: 250px;
-  height: 250px;
-  border-radius: 25px;
-  margin-top: 30px;
-  margin-bottom: 50px;
+  width: 228px;
+  height: 211px;
+  margin-top: 45px;
+  margin-bottom: 30px;
 }
 
 .game_view{
-  font-size: 42px;
-  color: #0F5272;
-  font-family: 'PixelFont';
-  margin-bottom: 100px;
-  margin-top: 200px;
+  font-size: 30px;
+  font-weight: 800;
+  color: white;
+  margin-top: 275px;
+}
+
+.loading_view{
+  color: white;
+  font-size: 16px;
+  margin-top: 12px;
+  font-weight: 800px;
 }
 .welcome_view{
-  font-size: 32px;
-  color: #0F5272;
-  font-family: 'PixelFont';
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 39px;
+  color: white;
+  margin-top: 150px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
+}
+
+.landing_view{
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 39px;
+  color: white;
+  margin-top: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 .info_block{
-  width: 80%;
+  font-weight: 200;
+  margin-top: 15px;
+  font-size: 15px;
+  line-height: 19.5px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: justify;
+  padding-left: 55px;
+  padding-right: 55px;
+}
+
+.cat_lvl{
+  width: 130px;
+  height: 260px;
+}
+.current_view{
   font-size: 20px;
-  color: #0F5272;
-  border: 2px solid #0F5272;
-  border-radius: 25px;
-  padding: 10px;
+  font-weight: 800;
+  color: white;
+  margin-top: 35px;
   margin-bottom: 20px;
 }
+.cat_lvl_container{
+  display: flex;
+  margin-left: 124px;
+  margin-bottom: 50px;
+}
+
+.cat_name{
+  font-weight: 200;
+  font-size: 15px;
+  color: white;
+  line-height: 19.5px;
+  margin-top: 23px;
+  display: flex;
+  text-align: center;
+  text-wrap: nowrap;
+  margin-left: -20px;
+}
 .progress-bar {
-  width: 80%;
-  height: 20px;
-  background-color: #eee;
-  border-radius: 10px;
+  width: 190px;
+  height: 16px;
+  background-color: #290038;
+  border-radius: 30px;
   overflow: hidden;
   margin: 0 auto;
 }
 .progress-bar_lvl {
-  width: 80%;
-  height: 30px;
-  background-color: #eee;
-  border-radius: 10px;
+  width: 190px;
+  height: 16px;
+  background-color: #290038;
+  border-radius: 30px;
   overflow: hidden;
   margin: 0 auto;
 }
 
 .progress {
   height: 100%;
-  background-color: #0F5272;
+  background-color: #791C9E;
   transition: width 0.3s ease-in-out;
 }
 .progress-text {
   position: absolute;
-  left: 45%;
-  font-size: 24px;
+  left: 44%;
+  font-size: 14px;
+  margin-top: 5px;
+  color: white;
+  font-weight: 200;
 }
 .loading {
   text-align: center;
 }
 
 .lvl_info_block{
-  font-size: 20px;
-  color: #0F5272;
-  margin-top: 5px;
+  font-size: 14px;
+  color: white;
+  font-weight: 200;
+  margin-top: 15px;
 }
 
 .referal_info{
-  font-size: 26px;
-  color: #0F5272;
+  font-size: 14px;
+  color: white;
+  font-weight: 200;
+  text-wrap: nowrap;
 }
 
 .ref_button{
@@ -101,18 +159,19 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 80%;
-  margin-top: 20px;
+  margin-top: 34px;
 }
 
 .invite_button{
-  width: 120px;
-  height: 48px;
-  border: 2px solid #0F5272;
-  background: #1D97A6;
-  color: #0F5272;
-  font-size: 24px;
-  border-radius: 10px;
+  width: 66px;
+  height: 20px;
+  border: none;
+  background: #6A058A;
+  color: white;
+  font-size: 14px;
+  font-weight: 200;
+  border-radius: 20px;
+  font-family: 'Gluten';
 }
 
 .bonus_block{
@@ -127,4 +186,60 @@ body {
   color: #0F5272;
   border: 2px solid #0F5272;
   border-radius: 10px;
+}
+
+.welcome_info{
+  color: white;
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-left: 66px;
+  padding-right: 66px;
+  line-height: 20.8px;
+}
+
+.welcome_info_2{
+  color: white;
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-left: 80px;
+  padding-right: 80px;
+  line-height: 20.8px;
+}
+.fraction{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  padding-left: 43px;
+  padding-right: 43px;
+}
+.fraction_item{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 125px;
+}
+.fraction_icon{
+  width: 70px;
+  height: 81px;
+}
+.fraction_icon_flask{
+  width: 47px;
+  height: 75px;
+}
+
+.fraction_text{
+  font-size: 16px;
+  color: white;
+  font-weight: 400;
+  margin-top: 10px;
 }
