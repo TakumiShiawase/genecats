@@ -78,7 +78,9 @@ body {
 }
 
 .cats_lvl{
-  width: 340px;
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .cat_lvl{
