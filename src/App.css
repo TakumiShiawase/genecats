@@ -9,7 +9,6 @@ body {
   margin: 0;
   background: url('./asset/loading/fone.png');
   background-size: cover;
-  width: 100%;
 }
 .game_page{
   display: flex;

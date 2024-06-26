@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/genecats/static/css/main.52b5229a.css",
+    "main.css": "/genecats/static/css/main.2df44449.css",
     "main.js": "/genecats/static/js/main.6b3e711b.js",
     "static/js/453.009ee3e9.chunk.js": "/genecats/static/js/453.009ee3e9.chunk.js",
     "static/media/fone.png": "/genecats/static/media/fone.4a18ead0455a80f1d243.png",
@@ -20,12 +20,12 @@
     "static/media/lvl_1.png": "/genecats/static/media/lvl_1.822f03ab402f67684c39.png",
     "static/media/lvl_8_bottom.png": "/genecats/static/media/lvl_8_bottom.1c24f1d325bce705bced.png",
     "index.html": "/genecats/index.html",
-    "main.52b5229a.css.map": "/genecats/static/css/main.52b5229a.css.map",
+    "main.2df44449.css.map": "/genecats/static/css/main.2df44449.css.map",
     "main.6b3e711b.js.map": "/genecats/static/js/main.6b3e711b.js.map",
     "453.009ee3e9.chunk.js.map": "/genecats/static/js/453.009ee3e9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.52b5229a.css",
+    "static/css/main.2df44449.css",
     "static/js/main.6b3e711b.js"
   ]
 }
