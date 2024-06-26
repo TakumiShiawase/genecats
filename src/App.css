@@ -7,17 +7,15 @@
 body {
   font-family: 'Gluten';
   margin: 0;
-  background: url('./asset/loading/fone.png');
-  background-size: cover;
 }
 .game_page{
   display: flex;
+  background: url('./asset/loading/fone.png');
+  background-size: cover;
   min-height: 100vh;
   max-height: 100%;
   align-items: center;
   flex-direction: column;
-  padding-left: 20px;
-  padding-right: 20px;
 }
 
 .cat_avatar{
@@ -82,8 +80,6 @@ body {
 
 .cats_lvl{
   width: 100%;
-  padding-left: 10px;
-  padding-right: 10px;
 }
 
 .cat_lvl{
