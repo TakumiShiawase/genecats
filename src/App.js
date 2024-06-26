@@ -24,7 +24,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/genecats" element={<Home />} />
-        <Route path='/welcome' element={ <Welcome />} />
+        <Route path='/genecats/welcome' element={ <Welcome />} />
       </Routes>
     </Router>
   );
