@@ -23,7 +23,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/genecats" element={<Home />} />
         <Route path='/welcome' element={ <Welcome />} />
       </Routes>
     </Router>
