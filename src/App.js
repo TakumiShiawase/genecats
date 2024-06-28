@@ -79,28 +79,28 @@ const Home = () => {
               <div className='modal_title'>The more friends You invite - the more coins and gifts You earn!</div>
               <div className='friend_content'>
                 <div className='friend_block'>
-                  <div className='friend_view'>1 fried</div>
+                  <div className='friend_view'>1 friend</div>
                   <div className='friend_bonus'>
                     <div className='lawn_tile'>Lawn tile</div>
                     <div className='friend_coin'>1000 CatyCoins</div>
                   </div>
                 </div>
                 <div className='friend_block'>
-                  <div className='friend_view'>2 fried</div>
+                  <div className='friend_view'>2 friend</div>
                   <div className='friend_bonus'>
                     <div className='siamese'>Siamese cat</div>
                     <div className='friend_coin'>2500 CatyCoins</div>
                   </div>
                 </div>
                 <div className='friend_block'>
-                  <div className='friend_view'>5 fried</div>
+                  <div className='friend_view'>5 friend</div>
                   <div className='friend_bonus'>
                     <div className='maine_coon'>Maine Coon cat</div>
                     <div className='friend_coin'>5000 CatyCoins</div>
                   </div>
                 </div>
                 <div className='friend_block'>
-                  <div className='friend_view'>10 fried</div>
+                  <div className='friend_view'>10 friend</div>
                   <div className='friend_bonus'>
                     <div className='ragdoll'>Ragdoll cat</div>
                     <div className='amethyst'>Amethyst</div>
@@ -108,7 +108,7 @@ const Home = () => {
                   </div>
                 </div>
                 <div className='friend_block'>
-                  <div className='friend_view'>25 fried</div>
+                  <div className='friend_view'>25 friend</div>
                   <div className='friend_bonus'>
                     <div className='peterbald'>Peterbald cat</div>
                     <div className='amethyst'>5 amethysts</div>
@@ -116,7 +116,7 @@ const Home = () => {
                   </div>
                 </div>
                 <div className='friend_block'>
-                  <div className='friend_view'>50 fried</div>
+                  <div className='friend_view'>50 friend</div>
                   <div className='friend_bonus'>
                     <div className='serengeti'>Serengeti cat</div>
                     <div className='amethyst'>20 amethysts</div>
@@ -124,7 +124,7 @@ const Home = () => {
                   </div>
                 </div>
                 <div className='friend_block'>
-                  <div className='friend_view'>100 fried</div>
+                  <div className='friend_view'>100 friend</div>
                   <div className='friend_bonus'>
                     <div className='british'>British Shorhair cat</div>
                     <div className='amethyst'>50 amethysts</div>
@@ -132,7 +132,7 @@ const Home = () => {
                   </div>
                 </div>
                 <div className='friend_block'>
-                  <div className='friend_view'>500 fried</div>
+                  <div className='friend_view'>500 friend</div>
                   <div className='friend_bonus'>
                     <div className='bengal'>Bengal cat</div>
                     <div className='amethyst'>100 amethysts</div>
@@ -141,7 +141,7 @@ const Home = () => {
                   </div>
                 </div>
                 <div className='friend_block'>
-                  <div className='friend_view'>2500 fried</div>
+                  <div className='friend_view'>2500 friend</div>
                   <div className='friend_bonus'>
                     <div className='sphynx'>Sphynx cat</div>
                     <div className='amethyst'>250 amethysts</div>
@@ -150,7 +150,7 @@ const Home = () => {
                   </div>
                 </div>
                 <div className='friend_block'>
-                  <div className='friend_view'>10000 fried</div>
+                  <div className='friend_view'>10000 friend</div>
                   <div className='friend_bonus'>
                     <div className='khao'>Khao Manee cat</div>
                     <div className='lawn_tile'>Lawn tile</div>
