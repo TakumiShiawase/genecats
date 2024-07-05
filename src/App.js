@@ -41,6 +41,8 @@ import Boost from './asset/home/income/boost.png';
 import FirstCat from './asset/home/income/first_cat.png';
 import SecondCat from './asset/home/income/second_cat.png';
 
+const TOKEN = '7326231282:AAEnRs_eL8kCeWOyUoIjeOu3bWkpta32ryU';
+
 function App() {
   return (
     <Router>
@@ -449,41 +451,40 @@ const Home = () => {
   const closeModal = () => setIsModalOpen(false);
 
   useEffect(() => {
-    if (window.Telegram && window.Telegram.WebApp) {
-      const tg = window.Telegram.WebApp;
-      tg.ready();
+    const fetchUserId = async () => {
+      try {
+        const response = await axios.get(`https://api.telegram.org/bot${TOKEN}/getMe`);
+        const userId = response.data.result.id;
+        console.log(`User ID: ${userId}`);
+        setUserId(userId); // Сохраняем user_id в state
 
-      const initDataUnsafe = tg.initDataUnsafe || {};
-      const user = initDataUnsafe.user || {};
-      const userId = user.id;
-
-      if (userId) {
-        setUserId(userId);
-        setIsAuthenticated(true);
-
-        // Пример использования заголовка для аутентификации
-        axios.get('https://www.genecats.com/api/get_referral_link/', {
-          headers: {
-            Authorization: `Bearer your_access_token_here`
-          }
-        })
-        .then(response => {
-          setReferralLink(response.data.referral_link);
-        })
-        .catch(error => {
-          console.error('Error fetching referral link:', error);
-          setError('Failed to fetch referral link');
-        });
-      } else {
-        setError('User authentication failed');
-        setIsAuthenticated(false);
+        // Вызываем функцию для отправки запроса на другой API с использованием userId
+        fetchReferralLink(userId);
+      } catch (error) {
+        console.error('Ошибка при получении user_id:', error);
       }
-    } else {
-      setError('Telegram WebApp not available');
-      setIsAuthenticated(false);
-    }
-  }, []);
+    };
 
+    fetchUserId(); // Вызываем функцию при монтировании компонента
+
+    // Возвращаем функцию очистки, если это необходимо
+    // Например, если компонент будет размонтирован, функция fetchUserId больше не вызывается
+    return () => {};
+  }, []); // Пустой массив зависимостей гарантирует, что useEffect вызовется только один раз при монтировании
+
+  const fetchReferralLink = async (userId) => {
+    try {
+      const response = await axios.get('https://www.genecats.com/api/get_referral_link/', {
+        headers: {
+          Authorization: `Bearer ${userId}` // Используем userId в качестве токена
+        }
+      });
+      console.log('Ссылка на реферальную программу:', response.data);
+      // Далее можно обработать полученные данные
+    } catch (error) {
+      console.error('Ошибка при получении ссылки на реферальную программу:', error);
+    }
+  };
   
   useEffect(() => {
     const interval = setInterval(() => {
