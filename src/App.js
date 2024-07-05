@@ -451,32 +451,36 @@ const Home = () => {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
+
   useEffect(() => {
     const fetchUserId = async () => {
       try {
-        const response = await axios.get(API_ENDPOINT);
-        console.log('Ответ от Telegram API:', response.data); // Выводим весь ответ от Telegram API в консоль
-        if (response.data.ok && response.data.result.length > 0) {
-          const userId = response.data.result[0].message.from.id;
-          console.log(`User ID: ${userId}`);
-          setUserId(userId); // Сохраняем user_id в state
-    
-          // Вызываем функцию для отправки запроса на другой API с использованием userId
-          fetchReferralLink(userId);
+        // Замените 'YOUR_BOT_TOKEN' на реальный токен вашего бота
+        const response = await axios.get(`https://api.telegram.org/bot${TOKEN}/getUpdates`);
+        
+        // Предположим, что обновления хранятся в response.data.result
+        const updates = response.data.result;
+        
+        // Найдем первое сообщение от пользователя
+        const userUpdate = updates.find(update => update.message && !update.message.from.is_bot);
+        
+        if (userUpdate) {
+          const user_id = userUpdate.message.from.id;
+          setUserId(user_id);
+          setLoading(false);
         } else {
-          console.error('Не удалось получить информацию о пользователе');
+          setLoading(false);
+          console.log("Не найдено сообщение от пользователя");
         }
       } catch (error) {
-        console.error('Ошибка при получении информации о пользователе:', error);
+        console.error('Ошибка при получении user_id от бота:', error);
+        setLoading(false);
       }
     };
 
-    fetchUserId(); // Вызываем функцию при монтировании компонента
+    fetchUserId();
+  }, []);
 
-    // Возвращаем функцию очистки, если это необходимо
-    // Например, если компонент будет размонтирован, функция fetchUserId больше не вызывается
-    return () => {};
-  }, []); // Пустой массив зависимостей гарантирует, что useEffect вызовется только один раз при монтировании
 
   const fetchReferralLink = async (userId) => {
     try {
@@ -634,7 +638,7 @@ const Home = () => {
           </div>
         <div className='lvl_info_block'>Invite 1 more friend for more gifts</div>
         <div className='referal_block'>
-        <div className='referal_info'>{referralLink}HUIROT</div>
+        <div className='referal_info'>{referralLink}HUI</div>
         <button className='ref_button'><svg role="img" xmlns="http://www.w3.org/2000/svg" width="26px" height="26px" viewBox="0 0 24 24" aria-labelledby="copyIconTitle" stroke="#fff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" color="#0F5272"> <title id="copyIconTitle">Copy</title> <rect width="12" height="14" x="8" y="7"/> <polyline points="16 3 4 3 4 17"/> </svg></button>
         <button className='invite_button'>Invite</button>
         </div>
