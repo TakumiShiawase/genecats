@@ -42,6 +42,7 @@ import FirstCat from './asset/home/income/first_cat.png';
 import SecondCat from './asset/home/income/second_cat.png';
 
 const TOKEN = '7326231282:AAEnRs_eL8kCeWOyUoIjeOu3bWkpta32ryU';
+const API_ENDPOINT = `https://api.telegram.org/bot${TOKEN}/getUpdates`;
 
 function App() {
   return (
@@ -453,15 +454,19 @@ const Home = () => {
   useEffect(() => {
     const fetchUserId = async () => {
       try {
-        const response = await axios.get(`https://api.telegram.org/bot${TOKEN}/getMe`);
-        const userId = response.data.result.id;
-        console.log(`User ID: ${userId}`);
-        setUserId(userId); // Сохраняем user_id в state
+        const response = await axios.get(API_ENDPOINT);
+        if (response.data.ok && response.data.result.length > 0) {
+          const userId = response.data.result[0].message.from.id;
+          console.log(`User ID: ${userId}`);
+          setUserId(userId); // Сохраняем user_id в state
 
-        // Вызываем функцию для отправки запроса на другой API с использованием userId
-        fetchReferralLink(userId);
+          // Вызываем функцию для отправки запроса на другой API с использованием userId
+          fetchReferralLink(userId);
+        } else {
+          console.error('Не удалось получить информацию о пользователе');
+        }
       } catch (error) {
-        console.error('Ошибка при получении user_id:', error);
+        console.error('Ошибка при получении информации о пользователе:', error);
       }
     };
 
@@ -485,6 +490,7 @@ const Home = () => {
       console.error('Ошибка при получении ссылки на реферальную программу:', error);
     }
   };
+
   
   useEffect(() => {
     const interval = setInterval(() => {
@@ -627,7 +633,7 @@ const Home = () => {
           </div>
         <div className='lvl_info_block'>Invite 1 more friend for more gifts</div>
         <div className='referal_block'>
-        <div className='referal_info'>{referralLink}Hue</div>
+        <div className='referal_info'>{referralLink}HUI</div>
         <button className='ref_button'><svg role="img" xmlns="http://www.w3.org/2000/svg" width="26px" height="26px" viewBox="0 0 24 24" aria-labelledby="copyIconTitle" stroke="#fff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" color="#0F5272"> <title id="copyIconTitle">Copy</title> <rect width="12" height="14" x="8" y="7"/> <polyline points="16 3 4 3 4 17"/> </svg></button>
         <button className='invite_button'>Invite</button>
         </div>
