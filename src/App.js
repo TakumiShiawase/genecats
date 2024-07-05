@@ -447,34 +447,7 @@ const Home = () => {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  useEffect(() => {
-    // Проверяем наличие window.Telegram.WebApp
-      const tg = window.Telegram.WebApp;
-      tg.ready();
 
-      const initDataUnsafe = tg.initDataUnsafe || {};
-      const user = initDataUnsafe.user || {};
-      const userId = user.id;
-
-      if (userId) {
-        setUserId(userId);
-
-        // Делать запрос к API только если userId определен
-        axios.get('https://www.genecats.com/api/get_referral_link/', {
-          params: { user_id: userId }
-        })
-        .then(response => {
-          setReferralLink(response.data.referral_link);
-        })
-        .catch(error => {
-          console.error('Error fetching referral link:', error);
-          setError('Failed to fetch referral link');
-        });
-      } else {
-        setError('User authentication failed');
-      }
-    
-  }, []);
 
   
   useEffect(() => {
@@ -618,7 +591,7 @@ const Home = () => {
           </div>
         <div className='lvl_info_block'>Invite 1 more friend for more gifts</div>
         <div className='referal_block'>
-        <div className='referal_info'>{referralLink}Hui</div>
+        <div className='referal_info'>{referralLink}Huii</div>
         <button className='ref_button'><svg role="img" xmlns="http://www.w3.org/2000/svg" width="26px" height="26px" viewBox="0 0 24 24" aria-labelledby="copyIconTitle" stroke="#fff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" color="#0F5272"> <title id="copyIconTitle">Copy</title> <rect width="12" height="14" x="8" y="7"/> <polyline points="16 3 4 3 4 17"/> </svg></button>
         <button className='invite_button'>Invite</button>
         </div>
