@@ -447,8 +447,6 @@ const Home = () => {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-
-
   
   useEffect(() => {
     const interval = setInterval(() => {
