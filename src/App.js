@@ -455,11 +455,12 @@ const Home = () => {
     const fetchUserId = async () => {
       try {
         const response = await axios.get(API_ENDPOINT);
+        console.log('Ответ от Telegram API:', response.data); // Выводим весь ответ от Telegram API в консоль
         if (response.data.ok && response.data.result.length > 0) {
           const userId = response.data.result[0].message.from.id;
           console.log(`User ID: ${userId}`);
           setUserId(userId); // Сохраняем user_id в state
-
+    
           // Вызываем функцию для отправки запроса на другой API с использованием userId
           fetchReferralLink(userId);
         } else {
