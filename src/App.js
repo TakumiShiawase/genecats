@@ -449,7 +449,6 @@ const Home = () => {
 
   useEffect(() => {
     // Проверяем наличие window.Telegram.WebApp
-    if (window.Telegram && window.Telegram.WebApp) {
       const tg = window.Telegram.WebApp;
       tg.ready();
 
@@ -474,9 +473,7 @@ const Home = () => {
       } else {
         setError('User authentication failed');
       }
-    } else {
-      setError('Telegram WebApp not available');
-    }
+    
   }, []);
 
   
