@@ -438,6 +438,7 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [userId, setUserId] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [referralLink, setReferralLink] = useState('');
   const [error, setError] = useState('');
   const [progress, setProgress] = useState(0);
@@ -446,6 +447,42 @@ const Home = () => {
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
+  useEffect(() => {
+    if (window.Telegram && window.Telegram.WebApp) {
+      const tg = window.Telegram.WebApp;
+      tg.ready();
+
+      const initDataUnsafe = tg.initDataUnsafe || {};
+      const user = initDataUnsafe.user || {};
+      const userId = user.id;
+
+      if (userId) {
+        setUserId(userId);
+        setIsAuthenticated(true);
+
+        // Пример использования заголовка для аутентификации
+        axios.get('https://www.genecats.com/api/get_referral_link/', {
+          headers: {
+            Authorization: `Bearer your_access_token_here`
+          }
+        })
+        .then(response => {
+          setReferralLink(response.data.referral_link);
+        })
+        .catch(error => {
+          console.error('Error fetching referral link:', error);
+          setError('Failed to fetch referral link');
+        });
+      } else {
+        setError('User authentication failed');
+        setIsAuthenticated(false);
+      }
+    } else {
+      setError('Telegram WebApp not available');
+      setIsAuthenticated(false);
+    }
+  }, []);
 
   
   useEffect(() => {
@@ -574,7 +611,7 @@ const Home = () => {
           </div>
         </div>
       )}
-          <div className='landing_view'>GeneCats</div>
+          <div className='landing_view'>GeneCats{userId}</div>
           <div className='info_block'>Invite friends to receive initial bonuses before the game is released. The initial bonus is available only to players who join before the project launches, as a token of appreciation for their support.</div>
           <div className='cat_lvl_container'>      
             <img className='cats_lvl' src={Lvl_8} />
