@@ -452,35 +452,39 @@ const Home = () => {
   const closeModal = () => setIsModalOpen(false);
 
   useEffect(() => {
-    const initDataUnsafe = window.Telegram.WebApp.initDataUnsafe;
-
-    if (initDataUnsafe && initDataUnsafe.user) {
-      const userId = initDataUnsafe.user.id;
-      const username = initDataUnsafe.user.username;
-
-      setUser({
-        id: userId,
-        username: username
-      });
-
-      // Отправка данных на сервер (если необходимо)
-      fetch('/api/save-user', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ userId, username })
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (data.status !== 'success') {
-          setError('Не удалось сохранить данные пользователя на сервере.');
-        }
-      })
-      .catch((error) => {
-        setError('Произошла ошибка при отправке данных на сервер.');
-        console.error('Ошибка:', error);
-      });
+    if (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initDataUnsafe) {
+      const initDataUnsafe = window.Telegram.WebApp.initDataUnsafe;
+  
+      if (initDataUnsafe.user) {
+        const userId = initDataUnsafe.user.id;
+        const username = initDataUnsafe.user.username;
+  
+        setUser({
+          id: userId,
+          username: username
+        });
+  
+        // Отправка данных на сервер (если необходимо)
+        fetch('/api/save-user', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ userId, username })
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.status !== 'success') {
+            setError('Не удалось сохранить данные пользователя на сервере.');
+          }
+        })
+        .catch((error) => {
+          setError('Произошла ошибка при отправке данных на сервер.');
+          console.error('Ошибка:', error);
+        });
+      }
+    } else {
+      setError('Telegram WebApp не загружен или недоступен.');
     }
   }, []);
   
