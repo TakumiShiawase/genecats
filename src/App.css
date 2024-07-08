@@ -19,8 +19,6 @@ body {
 }
 .game_page{
   display: flex;
-  max-width: 430px;
-  height: 100%;
   align-items: center;
   flex-direction: column;
 }
@@ -86,9 +84,7 @@ body {
 }
 
 .cats_lvl{
-  width: 100%;
-  margin-left: 20px;
-  margin-right: 20px;
+  width: 90%;
 }
 
 .cat_lvl{
