@@ -82,9 +82,12 @@ body {
   width: 292px;
   height: 90px;
 }
-
+.cat_lvl_container{
+  padding-left: 20px;
+  padding-right: 20px;
+}
 .cats_lvl{
-  width: 90%;
+  width: 100%;
 }
 
 .cat_lvl{
