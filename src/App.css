@@ -23,8 +23,6 @@ body {
   height: 100%;
   align-items: center;
   flex-direction: column;
-  padding-left: 20px;
-  padding-right: 20px;
 }
 
 .cat_avatar{
@@ -89,6 +87,8 @@ body {
 
 .cats_lvl{
   width: 100%;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .cat_lvl{
