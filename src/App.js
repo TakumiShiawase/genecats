@@ -440,7 +440,7 @@ const CatItem = () => {
 const Home = () => {
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [userId, setUserId] = useState(null);
+  const [user, setUser] = useState({ id: '', username: '' });
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [referralLink, setReferralLink] = useState('');
   const [error, setError] = useState('');
@@ -451,51 +451,38 @@ const Home = () => {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-
   useEffect(() => {
-    const fetchUserId = async () => {
-      try {
-        // Замените 'YOUR_BOT_TOKEN' на реальный токен вашего бота
-        const response = await axios.get(`https://api.telegram.org/bot${TOKEN}/getUpdates`);
-        
-        // Предположим, что обновления хранятся в response.data.result
-        const updates = response.data.result;
-        
-        // Найдем первое сообщение от пользователя
-        const userUpdate = updates.find(update => update.message && !update.message.from.is_bot);
-        
-        if (userUpdate) {
-          const user_id = userUpdate.message.from.id;
-          setUserId(user_id);
-          setLoading(false);
-        } else {
-          setLoading(false);
-          console.log("Не найдено сообщение от пользователя");
-        }
-      } catch (error) {
-        console.error('Ошибка при получении user_id от бота:', error);
-        setLoading(false);
-      }
-    };
+    const initDataUnsafe = window.Telegram.WebApp.initDataUnsafe;
 
-    fetchUserId();
-  }, []);
+    if (initDataUnsafe && initDataUnsafe.user) {
+      const userId = initDataUnsafe.user.id;
+      const username = initDataUnsafe.user.username;
 
-
-  const fetchReferralLink = async (userId) => {
-    try {
-      const response = await axios.get('https://www.genecats.com/api/get_referral_link/', {
-        headers: {
-          Authorization: `Bearer ${userId}` // Используем userId в качестве токена
-        }
+      setUser({
+        id: userId,
+        username: username
       });
-      console.log('Ссылка на реферальную программу:', response.data);
-      // Далее можно обработать полученные данные
-    } catch (error) {
-      console.error('Ошибка при получении ссылки на реферальную программу:', error);
-    }
-  };
 
+      // Отправка данных на сервер (если необходимо)
+      fetch('/api/save-user', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ userId, username })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.status !== 'success') {
+          setError('Не удалось сохранить данные пользователя на сервере.');
+        }
+      })
+      .catch((error) => {
+        setError('Произошла ошибка при отправке данных на сервер.');
+        console.error('Ошибка:', error);
+      });
+    }
+  }, []);
   
   useEffect(() => {
     const interval = setInterval(() => {
@@ -623,7 +610,7 @@ const Home = () => {
           </div>
         </div>
       )}
-          <div className='landing_view'>GeneCats{userId}</div>
+          <div className='landing_view'>GeneCats{user.username}</div>
           <div className='info_block'>Invite friends to receive initial bonuses before the game is released. The initial bonus is available only to players who join before the project launches, as a token of appreciation for their support.</div>
           <div className='cat_lvl_container'>      
             <img className='cats_lvl' src={Lvl_8} />
@@ -638,7 +625,7 @@ const Home = () => {
           </div>
         <div className='lvl_info_block'>Invite 1 more friend for more gifts</div>
         <div className='referal_block'>
-        <div className='referal_info'>{referralLink}HUI</div>
+        <div className='referal_info'>{referralLink}Her</div>
         <button className='ref_button'><svg role="img" xmlns="http://www.w3.org/2000/svg" width="26px" height="26px" viewBox="0 0 24 24" aria-labelledby="copyIconTitle" stroke="#fff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" color="#0F5272"> <title id="copyIconTitle">Copy</title> <rect width="12" height="14" x="8" y="7"/> <polyline points="16 3 4 3 4 17"/> </svg></button>
         <button className='invite_button'>Invite</button>
         </div>
