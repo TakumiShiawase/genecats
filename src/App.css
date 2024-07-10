@@ -10,18 +10,32 @@ html{
   background-size: cover;
   display: flex;
   justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
 }
 
 body {
   font-family: 'Gluten';
-  margin: 0 auto;
-  padding: 0 auto;
+  overflow-x: hidden;
 }
 .game_page{
   display: flex;
-  width: 90%;
   align-items: center;
   flex-direction: column;
+  overflow-x: hidden;
+}
+.loading_page{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow-x: hidden; 
+  height: 1000px;
+}
+
+.ne_bag_a_fi4a{
+  width: 100%;
+  height: 500px;
+  opacity: 0;
 }
 
 .cat_avatar{
@@ -286,8 +300,8 @@ body {
   border: #333334 1px solid;
   padding: 15px;
   position: relative;
-  width: 256px;
-  height: 655px;
+  width: 220px;
+  height: 550px;
 }
 
 .modal-backdrop_fraction {
@@ -351,7 +365,7 @@ body {
   font-weight: 400;
   color: #fff;
   line-height: 20.8px;
-  margin: 40px 25px 0 25px;
+  margin: 30px 25px 0 25px;
   text-align: center;
   margin-bottom: 15px;
 }
@@ -360,7 +374,7 @@ body {
   color: #fff;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 19px;
+  margin-bottom: 6px;
   font-size: 14px;
 }
 .modal_fraction_view{
