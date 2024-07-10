@@ -46,7 +46,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/api/game/" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path='/game' element={ <Game />} />
       </Routes>
     </Router>
