@@ -48,7 +48,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/api/create_user_or_login/" element={<Home />} />
+        <Route path="/api/game" element={<Home />} />
       </Routes>
     </Router>
   );
@@ -72,7 +72,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://genecats.com/api/create_user_or_login/', {
+        const response = await axios.get('https://genecats.com/api/game/', {
           headers: {
             'Content-Type': 'application/json',
           },
