@@ -48,12 +48,13 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
-
+        <Route path="/api/create_user_or_login/" element={<Home />} />
       </Routes>
     </Router>
   );
 }
+
+
 
 
 const Home = () => {
@@ -71,7 +72,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://genecats.com/api/game/', {
+        const response = await axios.get('https://genecats.com/api/create_user_or_login/', {
           headers: {
             'Content-Type': 'application/json',
           },
@@ -276,6 +277,78 @@ const Home = () => {
 // <img className='cat_lvl' src={ForestMoggy} />
 // <div className='cat_name'>Forest moggy Cat<br/>(Common)</div>
 
+const Welcome = () => {
+  const [isModalFlask, setIsModalFlask] = useState(false);
+  const openFlask = () => setIsModalFlask(true);
+  const closeFlask = () => setIsModalFlask(false);
+  const [isModalJewelers, setIsModalJewelers] = useState(false);
+  const openJewelers = () => setIsModalJewelers(true);
+  const closeJewelers = () => setIsModalJewelers(false);
+  const [isModalKnights, setIsModalKnights] = useState(false);
+  const openKnights = () => setIsModalKnights(true);
+  const closeKnights = () => setIsModalKnights(false);
+  
+  return(
+    <div className="game_page">
+      <div className='welcome_view'>Welcome<br/>to<br/>GeneCats</div>
+      <div className='welcome_info'>Please, choose the fraction You want to join:</div>
+      <div className='fraction'>
+      <button onClick={openFlask} className='fraction_item'>
+        <img className='fraction_icon_flask' src={Flask}/>
+        <div className='fraction_text'>Alchemists</div>
+      </button>
+      {isModalFlask && (<div className="modal-backdrop_fraction">
+          <div className="modal_fraction">
+            <button className="modal-close" onClick={closeFlask}>
+              <img src={Cancel}/>
+            </button>
+            <div className='modal_fraction_view'>Are You sure?</div>
+            <img className='fraction_icon_flask' src={Flask}/>
+            <div className='modal_fraction_buttons'>
+              <button className='modal_fraction_button'>Yes</button>
+              <button className='modal_fraction_button'>No</button>
+            </div>
+          </div>
+      </div>)}
+      <button onClick={openJewelers} className='fraction_item'>
+        <img className='fraction_icon' src={Gems}/>
+        <div className='fraction_text'>Jewelers</div>
+      </button>
+      {isModalJewelers && (<div className="modal-backdrop_fraction">
+          <div className="modal_fraction">
+            <button className="modal-close" onClick={closeJewelers}>
+              <img src={Cancel}/>
+            </button>
+            <div className='modal_fraction_view'>Are You sure?</div>
+            <img className='fraction_icon' src={Gems}/>
+            <div className='modal_fraction_buttons'>
+              <button className='modal_fraction_button'>Yes</button>
+              <button className='modal_fraction_button'>No</button>
+            </div>
+          </div>
+      </div>)}
+      <button onClick={openKnights} className='fraction_item'>
+        <img className='fraction_icon' src={Heart}/>
+        <div className='fraction_text'>Knights</div>
+      </button>
+      {isModalKnights && (<div className="modal-backdrop_fraction">
+          <div className="modal_fraction">
+            <button className="modal-close" onClick={closeKnights}>
+              <img src={Cancel}/>
+            </button>
+            <div className='modal_fraction_view'>Are You sure?</div>
+            <img className='fraction_icon' src={Heart}/>
+            <div className='modal_fraction_buttons'>
+              <button className='modal_fraction_button'>Yes</button>
+              <button className='modal_fraction_button'>No</button>
+            </div>
+          </div>
+      </div>)}
+      </div>
+      <div className='welcome_info_2'>Caution! This choice is given once and forever</div>
+    </div>
+  )
+}
 
 
 
