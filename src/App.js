@@ -46,7 +46,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="kurwa" element={<Home />} />
+        <Route path="/kurwa" element={<Home />} />
         <Route path='/game' element={ <Game />} />
       </Routes>
     </Router>
