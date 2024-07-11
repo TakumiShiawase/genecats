@@ -23,6 +23,7 @@ body {
   align-items: center;
   flex-direction: column;
   overflow-x: hidden;
+  height: 100%;
 }
 .loading_page{
   display: flex;
