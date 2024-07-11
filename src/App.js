@@ -437,7 +437,6 @@ const CatItem = () => {
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
-  const [data, setData] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [progress, setProgress] = useState(0);
   const [imageSrc, setImageSrc] = useState(null);
@@ -653,14 +652,14 @@ const Home = () => {
       <div className='progress_info_container'>
         <div className="progress-bar_lvl">
           <div className="progress" style={{ width: `${progress}%` }}>
-            <span className="progress-text">Level {data.level}</span>
+            <span className="progress-text">Level {userData.level}</span>
           </div>
         </div>
         <button className='info_button' onClick={openModal}><img src={Info}/></button>
       </div>
       <div className='lvl_info_block'>Invite 1 more friend for more gifts</div>
       <div className='referal_block'>
-        <div className='referal_info'>{data.referral_link}</div>
+        <div className='referal_info'>{userData.referral_link}</div>
         <button className='ref_button'>
           <svg role="img" xmlns="http://www.w3.org/2000/svg" width="26px" height="26px" viewBox="0 0 24 24" aria-labelledby="copyIconTitle" stroke="#fff" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" fill="none" color="#0F5272">
             <title id="copyIconTitle">Copy</title>
