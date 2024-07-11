@@ -603,7 +603,6 @@ const Home = () => {
           <div className="progress" style={{ width: `${progress}%` }}></div>
         </div>
         <div className='loading_view'>loading...</div>
-        <div className='ne_bag_a_fi4a'></div>
       </div>
     );
   }
