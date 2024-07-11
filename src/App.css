@@ -9,6 +9,7 @@ html{
   background: url('./asset/loading/fone.png');
   background-size: cover;
   display: flex;
+  overflow: hidden;
   justify-content: center;
   align-items: center;
   height: 1200px;
