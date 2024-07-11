@@ -445,7 +445,24 @@ const Home = () => {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('https://genecats.com/api/game/', {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        setData(response.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setLoading(false); // Устанавливаем loading в false после получения данных
+      }
+    };
 
+    fetchData();
+  }, []);
 
   const updateImage = (level) => {
     switch(level) {
@@ -498,7 +515,19 @@ const Home = () => {
   }, []);
 
   // Проверяем, что данные доступны перед их использованием
-
+  if (loading || !data) {
+    return (
+      <div className="loading_page">
+        <div className='game_view'>GeneCats</div>
+        <img className='cat_avatar' src={Loading}/>
+        <div className="progress-bar">
+          <div className="progress" style={{ width: `${progress}%` }}></div>
+        </div>
+        <div className='loading_view'>loading...</div>
+        <div className='ne_bag_a_fi4a'></div>
+      </div>
+    );
+  }
 
   // Обновляем изображение в зависимости от уровня
   updateImage(data.level);
