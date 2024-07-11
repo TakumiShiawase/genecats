@@ -452,31 +452,23 @@ const Home = () => {
     const telegram_user_id = params.get('telegram_user_id');
     const username = params.get('username');
 
-    setUserData({ telegram_user_id, username });
+    if (telegram_user_id && username) {
+      // Отправка данных на сервер для аутентификации и получения дополнительной информации
+      fetch('https://genecats.com/api/game/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          telegram_user_id,
+          username,
+        }),
+      })
+        .then(response => response.json())
+        .then(data => setUserData(data))
+        .catch(error => console.error('Error:', error));
+    }
   }, [location]);
-
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('https://genecats.com/api/game/', {
-          telegram_user_id: `${userData.telegram_user_id}`,
-          username: `${userData.username}`
-        });
-        setData(response.data);
-        console.log(userData.telegram_user_id)
-        console.log(userData.username)
-      } catch (error) {
-        console.error('Error fetching data:', error);
-        console.log(userData.telegram_user_id)
-        console.log(userData.username)
-      } finally {
-        setLoading(false); // Устанавливаем loading в false после получения данных
-      }
-    };
-
-    fetchData();
-  }, []);
 
   const updateImage = (level) => {
     switch(level) {
