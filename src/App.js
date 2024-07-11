@@ -451,9 +451,8 @@ const Home = () => {
     const params = new URLSearchParams(location.search);
     const telegram_user_id = params.get('telegram_user_id');
     const username = params.get('username');
-
+  
     if (telegram_user_id && username) {
-      // Отправка данных на сервер для аутентификации и получения дополнительной информации
       fetch('https://genecats.com/api/game/', {
         method: 'POST',
         headers: {
@@ -464,9 +463,20 @@ const Home = () => {
           username,
         }),
       })
-        .then(response => response.json())
-        .then(data => setUserData(data))
-        .catch(error => console.error('Error:', error));
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          setUserData(data); // Установка данных после успешной загрузки
+          setLoading(false); // Остановка состояния загрузки
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+          setLoading(false); // Остановка состояния загрузки в случае ошибки
+        });
     }
   }, [location]);
 
@@ -521,7 +531,7 @@ const Home = () => {
   }, []);
 
   // Проверяем, что данные доступны перед их использованием
-  if (loading || !userData) {
+  if (loading) {
     return (
       <div className="loading_page">
         <div className='game_view'>GeneCats{userData.telegram_user_id}</div>
