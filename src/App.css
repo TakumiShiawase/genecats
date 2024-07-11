@@ -11,6 +11,7 @@ html{
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 1200px;
 }
 @media only screen 
   and (min-device-height: 896px) /* минимальная высота iPhone 14 Pro Max */
@@ -116,7 +117,7 @@ body {
 
 .lvl_0 {
   width: 100%;
-  margin-left: 52px;
+  margin-left: 47px;
 }
 
 .cat_lvl{
