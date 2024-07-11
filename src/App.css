@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Gluten';
-  src: url('./fonts/gluten.ttf') format('truetype');
+  src: url('./fonts/gluten.ttf') format('woff2');
   font-weight: 100 900;
   font-style: normal;
 }
@@ -185,6 +185,7 @@ body {
 }
 
 .referal_info{
+  font-family: 'Gluten';
   background: none;
   border: none;
   font-size: 14px;
