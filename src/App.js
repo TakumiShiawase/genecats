@@ -464,8 +464,12 @@ const Home = () => {
           username: `${userData.username}`
         });
         setData(response.data);
+        console.log(userData.telegram_user_id)
+        console.log(userData.username)
       } catch (error) {
         console.error('Error fetching data:', error);
+        console.log(userData.telegram_user_id)
+        console.log(userData.username)
       } finally {
         setLoading(false); // Устанавливаем loading в false после получения данных
       }
