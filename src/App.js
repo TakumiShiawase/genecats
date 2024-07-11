@@ -720,7 +720,7 @@ const Home = () => {
         </div>
         <button className='info_button' onClick={openModal}><img src={Info}/></button>
       </div>
-      <div className='lvl_info_block'>Invite 1 more friend for more gifts</div>
+      <div className='lvl_info_block'>Invite 1 more friend for more gifts{progressWidth}</div>
       <div className='referal_block'>
         <button className='referal_info'onClick={() => copyToClipboard(userData.referral_link)}>GeneCats?start={userData.username}</button>
         <button className='ref_button' onClick={() => copyToClipboard(userData.referral_link)}>
