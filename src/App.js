@@ -515,19 +515,7 @@ const Home = () => {
   }, []);
 
   // Проверяем, что данные доступны перед их использованием
-  if (loading || !data) {
-    return (
-      <div className="loading_page">
-        <div className='game_view'>GeneCats</div>
-        <img className='cat_avatar' src={Loading}/>
-        <div className="progress-bar">
-          <div className="progress" style={{ width: `${progress}%` }}></div>
-        </div>
-        <div className='loading_view'>loading...</div>
-        <div className='ne_bag_a_fi4a'></div>
-      </div>
-    );
-  }
+
 
   // Обновляем изображение в зависимости от уровня
   updateImage(data.level);
