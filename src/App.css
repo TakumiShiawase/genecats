@@ -6,7 +6,7 @@
 }
 
 html{
-  background: url('./asset/loading/fone.png') no-repeat;
+  background: url('./asset/loading/fone.png');
   background-size: cover;
   display: flex;
   justify-content: center;
