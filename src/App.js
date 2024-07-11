@@ -445,24 +445,7 @@ const Home = () => {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('https://genecats.com/api/game/', {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-        setData(response.data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      } finally {
-        setLoading(false); // Устанавливаем loading в false после получения данных
-      }
-    };
 
-    fetchData();
-  }, []);
 
   const updateImage = (level) => {
     switch(level) {
