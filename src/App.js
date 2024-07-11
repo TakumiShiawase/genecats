@@ -521,7 +521,7 @@ const Home = () => {
   }, []);
 
   // Проверяем, что данные доступны перед их использованием
-  if (loading || !data) {
+  if (loading || !userData) {
     return (
       <div className="loading_page">
         <div className='game_view'>GeneCats</div>
