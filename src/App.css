@@ -5,25 +5,22 @@
   font-style: normal;
 }
 
-html{
+
+body {
+  font-family: 'Gluten';
+  overflow-x: hidden;
   background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow-x: hidden;
-}
-
-body {
-  font-family: 'Gluten';
-  overflow-x: hidden;
+  background: url('./asset/loading/fone.png');
 }
 .game_page{
   display: flex;
   align-items: center;
   flex-direction: column;
   overflow-x: hidden;
-  height: 100%;
-  background: url('./asset/loading/fone.png');
 }
 .loading_page{
   display: flex;
