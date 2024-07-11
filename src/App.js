@@ -564,10 +564,11 @@ const Home = () => {
     }
     return '';
   };
-  const friendsOwned = userData.Friends_needed_for_next_level - userData.next_level_referrals_needed;
+  let progressWidth = 0;
 
-  // Вычисляем процент выполнения
-  const progressWidth = (friendsOwned / userData.next_level_referrals_needed) * 100;
+  if (userData.next_level_referrals_needed !== 0 && !isNaN(userData.Friends_needed_for_next_level) && !isNaN(userData.next_level_referrals_needed)) {
+    progressWidth = (userData.Friends_needed_for_next_level / userData.next_level_referrals_needed) * 100;
+  }
 
   useEffect(() => {
     const interval = setInterval(() => {
