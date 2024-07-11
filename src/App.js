@@ -471,6 +471,7 @@ const Home = () => {
         .then(data => {
           setUserData(data); // Установка данных после успешной загрузки
           setLoading(false); // Остановка состояния загрузки
+          updateImage(data.level);
         })
         .catch(error => {
           console.error('Error fetching data:', error);
