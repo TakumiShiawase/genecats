@@ -469,7 +469,7 @@ const Home = () => {
           return response.json();
         })
         .then(data => {
-          setUserData(data); 
+          setUserData(data);
           updateImage(data.level);
         })
         .catch(error => {
@@ -488,10 +488,11 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    if (!loading && minLoadingTimePassed) {
+    if (minLoadingTimePassed) {
       setLoading(false);
     }
-  }, [loading, minLoadingTimePassed]);
+  }, [minLoadingTimePassed]);
+
 
   useEffect(() => {
     const script = document.createElement('script');
@@ -591,7 +592,7 @@ const Home = () => {
   if (loading) {
     return (
       <div className="loading_page">
-        <div className='game_view'>GeneCats{userData.telegram_user_id}</div>
+        <div className='game_view'>GeneCats</div>
         <img className='cat_avatar' src={Loading}/>
         <div className="progress-bar">
           <div className="progress" style={{ width: `${progress}%` }}></div>
@@ -709,7 +710,7 @@ const Home = () => {
       </div>
       <div className='progress_info_container'>
         <div className="progress-bar_lvl">
-          <div className="progress" style={{ width: `${progress}%` }}>
+          <div className="progress" style={{ width: `${(userData.Friends_needed_for_next_level / userData.next_level_referrals_needed) * 100}%` }}>
             <span className="progress-text">Level {userData.level}</span>
           </div>
         </div>
