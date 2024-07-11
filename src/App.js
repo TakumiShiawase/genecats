@@ -524,7 +524,7 @@ const Home = () => {
   if (loading || !userData) {
     return (
       <div className="loading_page">
-        <div className='game_view'>GeneCats</div>
+        <div className='game_view'>GeneCats{userData.telegram_user_id}</div>
         <img className='cat_avatar' src={Loading}/>
         <div className="progress-bar">
           <div className="progress" style={{ width: `${progress}%` }}></div>
