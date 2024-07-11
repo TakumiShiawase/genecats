@@ -603,7 +603,6 @@ const Home = () => {
           <div className="progress" style={{ width: `${progress}%` }}></div>
         </div>
         <div className='loading_view'>loading...</div>
-        <img className='cat_avatar' src={Loading}/>
       </div>
     );
   }

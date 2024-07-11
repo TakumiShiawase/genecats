@@ -9,12 +9,11 @@
 body {
   font-family: 'Gluten';
   overflow-x: hidden;
+  background: url('./asset/loading/fone.png') no-repeat;
   background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow-x: hidden;
-  background: url('./asset/loading/fone.png');
 }
 .game_page{
   display: flex;
@@ -55,7 +54,6 @@ body {
   font-size: 16px;
   margin-top: 12px;
   font-weight: 800;
-  margin-bottom: 600px;
 }
 .welcome_view{
   font-size: 30px;
