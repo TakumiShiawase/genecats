@@ -440,7 +440,7 @@ const Home = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [progress, setProgress] = useState(0);
   const [imageSrc, setImageSrc] = useState(null);
-
+  const [minLoadingTimePassed, setMinLoadingTimePassed] = useState(false);
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
   const location = useLocation();
@@ -469,16 +469,53 @@ const Home = () => {
           return response.json();
         })
         .then(data => {
-          setUserData(data); // Установка данных после успешной загрузки
-          setLoading(false); // Остановка состояния загрузки
+          setUserData(data); 
+          setLoading(false); 
           updateImage(data.level);
         })
         .catch(error => {
           console.error('Error fetching data:', error);
-          setLoading(false); // Остановка состояния загрузки в случае ошибки
+          setLoading(false);
         });
     }
   }, [location]);
+  useEffect(() => {
+    const minLoadingTime = 1500; // Минимальное время загрузки в миллисекундах
+    const timer = setTimeout(() => {
+      setMinLoadingTimePassed(true);
+    }, minLoadingTime);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (!loading && minLoadingTimePassed) {
+      setLoading(false);
+    }
+  }, [loading, minLoadingTimePassed]);
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = "https://telegram.org/js/telegram-web-app.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
+  const openTelegramContacts = () => {
+    if (window.Telegram) {
+      window.Telegram.WebApp.openContact({
+        message: 'Invite your friends to join the game!',
+        url: userData.referral_link, // Используем реферальную ссылку из данных пользователя
+      });
+    } else {
+      const referralMessage = `Invite your friends to join the game! ${userData.referral_link}`;
+      const telegramContactUrl = `https://t.me/share/url?url=${encodeURIComponent(userData.referral_link)}&text=${encodeURIComponent(referralMessage)}`;
+      window.open(telegramContactUrl, '_blank');
+    }
+  };
 
   const updateImage = (level) => {
     switch(level) {
@@ -513,6 +550,12 @@ const Home = () => {
         setImageSrc(Lvl_0); // Уровень по умолчанию
     }
   };
+  const getLevelClass = () => {
+    if (imageSrc === Lvl_0) {
+      return 'lvl_0';
+    }
+    return '';
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -529,6 +572,13 @@ const Home = () => {
       clearInterval(interval);
     };
   }, []);
+  const copyToClipboard = (text) => {
+    navigator.clipboard.writeText(text).then(() => {
+      console.log('Copied to clipboard successfully!');
+    }, (err) => {
+      console.error('Could not copy text: ', err);
+    });
+  };
 
   // Проверяем, что данные доступны перед их использованием
   if (loading) {
@@ -648,7 +698,7 @@ const Home = () => {
       <div className='landing_view'>GeneCats</div>
       <div className='info_block'>Invite friends to receive initial bonuses before the game is released. The initial bonus is available only to players who join before the project launches, as a token of appreciation for their support.</div>
       <div className='cat_lvl_container'>      
-        <img className='cats_lvl' src={imageSrc} />
+        <img className={`cats_lvl ${getLevelClass()}`} src={imageSrc} />
       </div>
       <div className='progress_info_container'>
         <div className="progress-bar_lvl">
@@ -660,15 +710,15 @@ const Home = () => {
       </div>
       <div className='lvl_info_block'>Invite 1 more friend for more gifts</div>
       <div className='referal_block'>
-        <div className='referal_info'>{userData.referral_link}</div>
-        <button className='ref_button'>
+        <button className='referal_info'onClick={() => copyToClipboard(userData.referral_link)}></button>
+        <button className='ref_button' onClick={() => copyToClipboard(userData.referral_link)}>
           <svg role="img" xmlns="http://www.w3.org/2000/svg" width="26px" height="26px" viewBox="0 0 24 24" aria-labelledby="copyIconTitle" stroke="#fff" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" fill="none" color="#0F5272">
             <title id="copyIconTitle">Copy</title>
             <rect width="12" height="14" x="8" y="7"/>
             <polyline points="16 3 4 3 4 17"/>
           </svg>
         </button>
-        <button className='invite_button'>Invite</button>
+        <button className='invite_button'onClick={openTelegramContacts}>Invite</button>
       </div>
       <img className='bot_gold' src={Lvl_8_bot}/>
     </div>

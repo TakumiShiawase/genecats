@@ -105,6 +105,11 @@ body {
   width: 100%;
 }
 
+.lvl_0 {
+  width: 100%;
+  margin-left: 99px;
+}
+
 .cat_lvl{
   width: 130px;
   height: 260px;
@@ -177,6 +182,8 @@ body {
 }
 
 .referal_info{
+  background: none;
+  border: none;
   font-size: 14px;
   color: white;
   font-weight: 200;
@@ -301,7 +308,7 @@ body {
   padding: 15px;
   position: relative;
   width: 220px;
-  height: 550px;
+  min-height: 550px;
 }
 
 .modal-backdrop_fraction {
