@@ -7,11 +7,12 @@
 
 html{
   background: url('./asset/fone.png');
-  background-size: cover;
+  background-size: 100%;
   display: flex;
   overflow: hidden;
   justify-content: center;
   align-items: center;
+  min-width: 430px;
   height: 1200px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
