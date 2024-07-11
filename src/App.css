@@ -30,7 +30,7 @@ body {
   align-items: center;
   flex-direction: column;
   overflow-x: hidden; 
-  height: 1000px;
+  max-height: 100%;
 }
 
 .ne_bag_a_fi4a{
