@@ -564,10 +564,10 @@ const Home = () => {
     }
     return '';
   };
-  let progressWidth = 0;
-  if (userData.next_level_referrals_needed !== 0) {
-    progressWidth = (userData.Friends_needed_for_next_level / userData.next_level_referrals_needed) * 100;
-  }
+  const friendsOwned = userData.Friends_needed_for_next_level - userData.next_level_referrals_needed;
+
+  // Вычисляем процент выполнения
+  const progressWidth = (friendsOwned / userData.next_level_referrals_needed) * 100;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -578,7 +578,7 @@ const Home = () => {
         }
         return Math.min(oldProgress + 10, 100);
       });
-    }, 300); // Обновляем каждые 300 миллисекунд
+    }, 150); // Обновляем каждые 300 миллисекунд
 
     return () => {
       clearInterval(interval);
