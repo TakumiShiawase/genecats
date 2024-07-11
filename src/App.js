@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route,Routes, Switch,useLocation } from 'react
 import './App.css';
 import axios from 'axios';
 import Loading from './asset/loading/loading.png';
-import Lvl_0 from './asset/landing/forest_moggy_1.png';
+import Lvl_0 from './asset/landing/lvl_0.png';
 import Info from './asset/landing/info.png';
 import Lvl_1 from './asset/landing/lvl_1.png';
 import Lvl_2 from './asset/landing/lvl_2.png';

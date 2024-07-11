@@ -1,12 +1,11 @@
 {
   "files": {
     "main.css": "/static/css/main.23e52c24.css",
-    "main.js": "/static/js/main.eb48094c.js",
+    "main.js": "/static/js/main.83ec7cea.js",
     "static/js/453.009ee3e9.chunk.js": "/static/js/453.009ee3e9.chunk.js",
     "static/media/fone.png": "/static/media/fone.4a18ead0455a80f1d243.png",
     "static/media/loading.png": "/static/media/loading.0ef34481b6ad870aa179.png",
     "static/media/gluten.ttf": "/static/media/gluten.f779a8325cbf67c1d309.ttf",
-    "static/media/forest_moggy_1.png": "/static/media/forest_moggy_1.66386440f7b87ba02290.png",
     "static/media/lvl_8.png": "/static/media/lvl_8.1719ed4caea095a4b851.png",
     "static/media/lvl_7.png": "/static/media/lvl_7.66e8ac324decb038cf78.png",
     "static/media/lvl_6.png": "/static/media/lvl_6.d6cb0a3601fa5bc995bb.png",
@@ -18,6 +17,7 @@
     "static/media/Flask.png": "/static/media/Flask.7b15b2883dd426846fdd.png",
     "static/media/Gems.png": "/static/media/Gems.76fe0d2660a1efcb354e.png",
     "static/media/lvl_1.png": "/static/media/lvl_1.822f03ab402f67684c39.png",
+    "static/media/lvl_0.png": "/static/media/lvl_0.f4e01a7f2bb57b802eb9.png",
     "static/media/lvl_8_bottom.png": "/static/media/lvl_8_bottom.1c24f1d325bce705bced.png",
     "static/media/Gavno.png": "/static/media/Gavno.0718262a092b75e38c6b.png",
     "static/media/green_hammer.png": "/static/media/green_hammer.04278f17f0915e7058b6.png",
@@ -25,11 +25,11 @@
     "static/media/blue_hammer.png": "/static/media/blue_hammer.c9a177383e90cf203f37.png",
     "index.html": "/index.html",
     "main.23e52c24.css.map": "/static/css/main.23e52c24.css.map",
-    "main.eb48094c.js.map": "/static/js/main.eb48094c.js.map",
+    "main.83ec7cea.js.map": "/static/js/main.83ec7cea.js.map",
     "453.009ee3e9.chunk.js.map": "/static/js/453.009ee3e9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.23e52c24.css",
-    "static/js/main.eb48094c.js"
+    "static/js/main.83ec7cea.js"
   ]
 }
