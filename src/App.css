@@ -12,6 +12,20 @@ html{
   justify-content: center;
   align-items: center;
 }
+@media only screen 
+  and (min-device-height: 896px) /* минимальная высота iPhone 14 Pro Max */
+  and (max-device-height: 926px) /* максимальная высота iPhone 14 Pro Max */
+  and (-webkit-min-device-pixel-ratio: 3) {
+  
+  .game_page{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow-x: hidden;
+    height: 100vh;
+  }
+
+}
 
 body {
   font-family: 'Gluten';
