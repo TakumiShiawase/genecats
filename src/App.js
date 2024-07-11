@@ -470,7 +470,6 @@ const Home = () => {
         })
         .then(data => {
           setUserData(data); 
-          setLoading(false); 
           updateImage(data.level);
         })
         .catch(error => {
@@ -493,11 +492,18 @@ const Home = () => {
       setLoading(false);
     }
   }, [loading, minLoadingTimePassed]);
+
   useEffect(() => {
     const script = document.createElement('script');
     script.src = "https://telegram.org/js/telegram-web-app.js";
     script.async = true;
     document.body.appendChild(script);
+
+    script.onload = () => {
+      if (window.Telegram) {
+        window.Telegram.WebApp.ready();
+      }
+    };
 
     return () => {
       document.body.removeChild(script);
@@ -505,10 +511,10 @@ const Home = () => {
   }, []);
 
   const openTelegramContacts = () => {
-    if (window.Telegram) {
+    if (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.openContact) {
       window.Telegram.WebApp.openContact({
         message: 'Invite your friends to join the game!',
-        url: userData.referral_link, // Используем реферальную ссылку из данных пользователя
+        url: userData.referral_link,
       });
     } else {
       const referralMessage = `Invite your friends to join the game! ${userData.referral_link}`;
@@ -516,6 +522,7 @@ const Home = () => {
       window.open(telegramContactUrl, '_blank');
     }
   };
+
 
   const updateImage = (level) => {
     switch(level) {
@@ -710,7 +717,7 @@ const Home = () => {
       </div>
       <div className='lvl_info_block'>Invite 1 more friend for more gifts</div>
       <div className='referal_block'>
-        <button className='referal_info'onClick={() => copyToClipboard(userData.referral_link)}></button>
+        <button className='referal_info'onClick={() => copyToClipboard(userData.referral_link)}>GeneCats?start={userData.username}</button>
         <button className='ref_button' onClick={() => copyToClipboard(userData.referral_link)}>
           <svg role="img" xmlns="http://www.w3.org/2000/svg" width="26px" height="26px" viewBox="0 0 24 24" aria-labelledby="copyIconTitle" stroke="#fff" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" fill="none" color="#0F5272">
             <title id="copyIconTitle">Copy</title>
