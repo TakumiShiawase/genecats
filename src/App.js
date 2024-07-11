@@ -564,6 +564,10 @@ const Home = () => {
     }
     return '';
   };
+  let progressWidth = 0;
+  if (userData.next_level_referrals_needed !== 0) {
+    progressWidth = (userData.Friends_needed_for_next_level / userData.next_level_referrals_needed) * 100;
+  }
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -710,7 +714,7 @@ const Home = () => {
       </div>
       <div className='progress_info_container'>
         <div className="progress-bar_lvl">
-          <div className="progress" style={{ width: `${(userData.Friends_needed_for_next_level / userData.next_level_referrals_needed) * 100}%` }}>
+          <div className="progress" style={{ width: `${progressWidth}%` }}>
             <span className="progress-text">Level {userData.level}</span>
           </div>
         </div>
@@ -728,7 +732,6 @@ const Home = () => {
         </button>
         <button className='invite_button'onClick={openTelegramContacts}>Invite</button>
       </div>
-      <img className='bot_gold' src={Lvl_8_bot}/>
     </div>
   );
 }
