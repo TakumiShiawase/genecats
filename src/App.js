@@ -513,9 +513,13 @@ const Home = () => {
   const openTelegramContacts = () => {
     if (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.openContact) {
       window.Telegram.WebApp.openContact({
-        message: 'Invite your friends to join the game!',
+        message: 'Invite your friends to join the game!4len',
         url: userData.referral_link,
       });
+    } else {
+      const referralMessage = `Invite your friends to join the game! ${userData.referral_link}`;
+      const telegramContactUrl = `https://t.me/share/url?url=${encodeURIComponent(userData.referral_link)}&text=${encodeURIComponent(referralMessage)}`;
+      window.open(telegramContactUrl, '_blank');
     }
   };
 
