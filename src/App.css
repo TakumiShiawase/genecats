@@ -166,12 +166,13 @@ body {
 }
 .progress-text {
   position: absolute;
-  left: 44%;
+  left: 42%;
   font-size: 14px;
-  margin-top: 5px;
+  margin-top: 2px;
   color: white;
   font-weight: 200;
 }
+
 .loading {
   text-align: center;
 }

@@ -12,8 +12,7 @@ import Lvl_4 from './asset/landing/lvl_4.png';
 import Lvl_5 from './asset/landing/lvl_5.png';
 import Lvl_6 from './asset/landing/lvl_6.png';
 import Lvl_7 from './asset/landing/lvl_7.png';
-import Lvl_8 from './asset/landing/lvl_8.png';
-import Lvl_8_bot from './asset/landing/lvl_8_bottom.png';
+// import Lvl_8 from './asset/landing/lvl_8.png';
 import Flask from './asset/welcome/Flask.png';
 import Gems from './asset/welcome/Gems.png';
 import Heart from './asset/welcome/Heart.png';
@@ -551,9 +550,9 @@ const Home = () => {
       case 7:
         setImageSrc(Lvl_7);
         break;
-      case 8:
-        setImageSrc(Lvl_8);
-        break;
+      // case 8:
+      //   setImageSrc(Lvl_8);
+      //   break;
       default:
         setImageSrc(Lvl_0); // Уровень по умолчанию
     }
@@ -720,7 +719,7 @@ const Home = () => {
         </div>
         <button className='info_button' onClick={openModal}><img src={Info}/></button>
       </div>
-      <div className='lvl_info_block'>Invite {userData.next_level_referrals_needed} more friend for more gifts</div>
+      <div className='lvl_info_block'>Invite {userData.friends_needed_for_next_level} more {userData.friends_needed_for_next_level <= 1 ? 'friend' : 'friends'} for more gifts</div>
       <div className='referal_block'>
         <button className='referal_info'onClick={() => copyToClipboard(userData.referral_link)}>GeneCats?start={userData.username}</button>
         <button className='ref_button' onClick={() => copyToClipboard(userData.referral_link)}>
