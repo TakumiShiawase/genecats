@@ -109,9 +109,15 @@ body {
 
 .lvl_0 {
   width: 100%;
-  margin-left: 47px;
+  margin-left: 43px;
 }
-
+.cat_lvl_views{
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-weight: 800;
+  font-size: 20px;
+}
 .cat_lvl{
   width: 130px;
   height: 260px;
