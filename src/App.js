@@ -484,7 +484,12 @@ const Home = () => {
           setLoading(false);
         });
     }
+    if (!telegram_user_id) {
+      return <div>Error: Telegram user ID is required.</div>;
+    }
   }, [location]);
+
+
   useEffect(() => {
     const minLoadingTime = 1500; // Минимальное время загрузки в миллисекундах
     const timer = setTimeout(() => {
