@@ -625,8 +625,8 @@ const Home = () => {
   return (
     <div className="game_page">
 {isModalOpen && (
-        <div className="modal-backdrop">
-          <div className="modal">
+        <div className="modal-backdrop"  onClick={closeModal}>
+          <div className="modal" onClick={e => e.stopPropagation()}>
             <button className="modal-close" onClick={closeModal}>
               <img src={Cancel}/>
             </button>
