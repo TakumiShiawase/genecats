@@ -522,11 +522,11 @@ const Home = () => {
   const openTelegramContacts = () => {
     if (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.openContact) {
       window.Telegram.WebApp.openContact({
-        message: 'Invite your friends to join the game!',
+        message: 'Get extra bonuses!',
         url: userData.referral_link,
       });
     } else {
-      const referralMessage = `Invite your friends to join the game!`;
+      const referralMessage = `Get extra bonuses!`;
       const telegramContactUrl = `https://t.me/share/url?url=${encodeURIComponent(userData.referral_link)}&text=${encodeURIComponent(referralMessage)}`;
       window.open(telegramContactUrl, '_blank');
     }
@@ -733,7 +733,7 @@ const Home = () => {
       <div className='referal_block'>
         <button className='referal_info'onClick={() => copyToClipboard(userData.referral_link)}>GeneCats?start={userData.telegram_user_id}</button>
         <button className='ref_button' onClick={() => copyToClipboard(userData.referral_link)}>
-          <svg role="img" xmlns="http://www.w3.org/2000/svg" width="26px" height="26px" viewBox="0 0 24 24" aria-labelledby="copyIconTitle" stroke="#fff" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" fill="none" color="#0F5272">
+          <svg role="img" xmlns="http://www.w3.org/2000/svg" width="52px" height="52px" viewBox="0 0 24 24" aria-labelledby="copyIconTitle" stroke="#fff" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" fill="none" color="#0F5272">
             <title id="copyIconTitle">Copy</title>
             <rect width="12" height="14" x="8" y="7"/>
             <polyline points="16 3 4 3 4 17"/>
