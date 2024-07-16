@@ -208,8 +208,10 @@ body {
 .info_button{
   all: unset;
   margin-left: 5px;
-  width: 42px;
-  height: 42px;
+}
+.info_button img{
+  width: 26px;
+  height: 26px;
 }
 
 .referal_block{
