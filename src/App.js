@@ -459,7 +459,7 @@ const Home = () => {
     const params = new URLSearchParams(location.search);
     const telegram_user_id = params.get('telegram_user_id');
   
-    if (telegram_user_id) {
+    if (!telegram_user_id) {
       fetch('https://genecats.com/api/game/', {
         method: 'POST',
         headers: {
@@ -484,7 +484,7 @@ const Home = () => {
           setLoading(false);
         });
     }
-    if (!telegram_user_id) {
+    if (telegram_user_id) {
       return <div>Error: Telegram user ID is required.</div>;
     }
   }, [location]);
