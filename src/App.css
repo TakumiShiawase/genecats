@@ -164,6 +164,7 @@ body {
 }
 .progress_info_container{
   display: flex;
+  align-items: center;
 }
 .progress {
   height: 100%;
