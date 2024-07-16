@@ -383,6 +383,10 @@ body {
   border-radius: 50%;
   transition: background-color 0.2s;
 }
+.modal-close img {
+  width: 24px;
+  height: 24px;
+}
 
 .modal-close:hover {
   background-color: #eee;
