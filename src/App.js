@@ -718,7 +718,7 @@ const Home = () => {
       <div className='landing_view'>GeneCats</div>
       <div className='info_block'>Invite friends to receive initial bonuses before the game is released. The initial bonus is available only to players who join before the project launches, as a token of appreciation for their support.</div>
       <div className='cat_lvl_container'>  
-        <div className='cat_lvl_views'>Current Bonuses:ForSUKA</div>    
+        <div className='cat_lvl_views'>Current Bonuses:</div>    
         <img className={`cats_lvl ${getLevelClass()}`} src={imageSrc} />
       </div>
       <div className='progress_info_container'>
