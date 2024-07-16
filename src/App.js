@@ -448,7 +448,6 @@ const Home = () => {
     level: 0,
     CatyCoins: 0,
     telegram_user_id: '',
-    telegram_username: '',
     referral_link: '',
     invited_friends_count: 0,
     friends_needed_for_next_level: 0,
@@ -459,7 +458,7 @@ const Home = () => {
     const params = new URLSearchParams(location.search);
     const telegram_user_id = params.get('telegram_user_id');
   
-    if (!telegram_user_id) {
+    if (telegram_user_id) {
       fetch('https://genecats.com/api/game/', {
         method: 'POST',
         headers: {
@@ -483,9 +482,6 @@ const Home = () => {
           console.error('Error fetching data:', error);
           setLoading(false);
         });
-    }
-    if (telegram_user_id) {
-      return <div>Error: Telegram user ID is required.</div>;
     }
   }, [location]);
 
