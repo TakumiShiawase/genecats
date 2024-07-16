@@ -733,7 +733,7 @@ const Home = () => {
       <div className='referal_block'>
         <button className='referal_info'onClick={() => copyToClipboard(userData.referral_link)}>GeneCats?start={userData.telegram_user_id}</button>
         <button className='ref_button' onClick={() => copyToClipboard(userData.referral_link)}>
-          <svg role="img" xmlns="http://www.w3.org/2000/svg" width="52px" height="52px" viewBox="0 0 24 24" aria-labelledby="copyIconTitle" stroke="#fff" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" fill="none" color="#0F5272">
+          <svg role="img" xmlns="http://www.w3.org/2000/svg" width="52px" height="52px" viewBox="0 0 48 48" aria-labelledby="copyIconTitle" stroke="#fff" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" fill="none" color="#0F5272">
             <title id="copyIconTitle">Copy</title>
             <rect width="12" height="14" x="8" y="7"/>
             <polyline points="16 3 4 3 4 17"/>
