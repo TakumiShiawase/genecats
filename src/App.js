@@ -443,6 +443,7 @@ const Home = () => {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
   const location = useLocation();
+  const [copySuccess, setCopySuccess] = useState(false);
   const [userData, setUserData] = useState({
     user_id: '',
     level: 0,
@@ -596,11 +597,16 @@ const Home = () => {
   const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text).then(() => {
       console.log('Copied to clipboard successfully!');
+      setCopySuccess(true);
+  
+      // Скрыть уведомление через 2 секунды
+      setTimeout(() => {
+        setCopySuccess(false);
+      }, 2000);
     }, (err) => {
       console.error('Could not copy text: ', err);
     });
   };
-
 
   if (loading) {
     return (
@@ -733,12 +739,17 @@ const Home = () => {
       <div className='referal_block'>
         <button className='referal_info'onClick={() => copyToClipboard(userData.referral_link)}>GeneCats?start={userData.telegram_user_id}</button>
         <button className='ref_button' onClick={() => copyToClipboard(userData.referral_link)}>
-          <svg role="img" xmlns="http://www.w3.org/2000/svg" width="52px" height="52px" viewBox="0 0 48 48" aria-labelledby="copyIconTitle" stroke="#fff" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" fill="none" color="#0F5272">
+          <svg role="img" xmlns="http://www.w3.org/2000/svg" width="26px" height="26px" viewBox="0 0 24 24" aria-labelledby="copyIconTitle" stroke="#fff" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" fill="none" color="#0F5272">
             <title id="copyIconTitle">Copy</title>
             <rect width="12" height="14" x="8" y="7"/>
             <polyline points="16 3 4 3 4 17"/>
           </svg>
         </button>
+        {copySuccess && (
+  <div className="copy-notification">
+    Text copied to clipboard!
+  </div>
+)}
         <button className='invite_button'onClick={openTelegramContacts}>Invite</button>
       </div>
     </div>
