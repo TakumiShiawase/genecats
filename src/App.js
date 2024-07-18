@@ -21,8 +21,33 @@ import un_Lvl_5 from './asset/landing/un_lvl_5.png';
 import un_Lvl_6 from './asset/landing/un_lvl_6.png';
 import un_Lvl_7 from './asset/landing/un_lvl_7.png';
 import Paw from './asset/landing/paw.png';
-
+// import Lvl_8 from './asset/landing/lvl_8.png';
+import Flask from './asset/welcome/Flask.png';
+import Gems from './asset/welcome/Gems.png';
+import Heart from './asset/welcome/Heart.png';
 import Cancel from './asset/landing/Cancel.png';
+import { GameLoop } from 'react-game-kit';
+import greenHouse from './asset/home/Gavno.png';
+import Fone from './asset/loading/fone.png';
+import Amethyst from './asset/home/top bar/Amethyst.png';
+import Stone from './asset/home/top bar/stone.png';
+import Logs from './asset/home/top bar/logs.png';
+import Golden from './asset/home/top bar/Golden.png';
+import BlueHammer from './asset/home/hammer/blue_hammer.png';
+import GreenHammer from './asset/home/hammer/green_hammer.png';
+import PurpleHammer from './asset/home/hammer/purple_hummer.png';
+import Leader from './asset/home/menu/leader.png';
+import Friends from './asset/home/menu/friends.png';
+import HomeMenu from './asset/home/menu/flask1.png';
+import Storage from './asset/home/menu/storage.png';
+import Inventory from './asset/home/menu/inventory.png';
+import Shop from './asset/home/menu/shop.png';
+import Task from './asset/home/menu/task.png';
+import Arrow from './asset/home/income/arrow.png';
+import Plus from './asset/home/income/Plus.png';
+import Boost from './asset/home/income/boost.png';
+import FirstCat from './asset/home/income/first_cat.png';
+import SecondCat from './asset/home/income/second_cat.png';
 
 
 function App() {
@@ -30,6 +55,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+
       </Routes>
     </Router>
   );
