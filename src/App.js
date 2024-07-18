@@ -64,6 +64,7 @@ function App() {
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
+  const [subscriptionStatus, setSubscriptionStatus] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [progress, setProgress] = useState(0);
   const [imageSrc, setImageSrc] = useState(null);
@@ -82,10 +83,28 @@ const Home = () => {
     friends_needed_for_next_level: 0,
     next_level_referrals_needed: 0,
   });
+  const params = new URLSearchParams(location.search);
+  const telegram_user_id = params.get('telegram_user_id');
+  const handleCheckSubscription = async () => {
+    try {
+      const response = await axios.post('https://genecats.com/api/check_subscription/', {
+        telegram_user_id
+      });
 
+      const { data } = response;
+      if (data === true) {
+        // Если ответ true, обновляем страницу
+        window.location.reload();
+      } else {
+        // Если ответ false, делаем нужные действия (например, показываем сообщение)
+        console.log('Subscription check failed.');
+      }
+    } catch (error) {
+      console.error('Error checking subscription:', error);
+    }
+  };
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const telegram_user_id = params.get('telegram_user_id');
+
   
     if (telegram_user_id) {
       fetch('https://genecats.com/api/game/', {
@@ -417,7 +436,7 @@ const Home = () => {
       <div className='join_block'>
         <div className='join_text'>Join to community</div>
         <button className='join_button' onClick={() => window.open('https://t.me/GeneCats', '_blank')}>Join</button>
-        <button className='join_button'>Claim</button>
+        <button className='join_button' onClick={handleCheckSubscription}>Claim</button>
       </div>
       <div>
       {userData.received_subscription_reward ? (
