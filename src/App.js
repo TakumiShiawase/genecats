@@ -182,8 +182,7 @@ const Home = () => {
 
 
   const updateImage = (level) => {
-    const reward = userData.received_subscription_reward
-    if (reward) {
+    if (userData.received_subscription_reward) {
       switch(level) {
         case 0:
           setImageSrc(Lvl_0);
