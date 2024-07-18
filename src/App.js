@@ -179,9 +179,10 @@ const Home = () => {
       window.open(telegramContactUrl, '_blank');
     }
   };
-  const reward = userData.received_subscription_reward
 
-  const updateImage = (level, reward) => {
+
+  const updateImage = (level) => {
+    const reward = userData.received_subscription_reward
     if (reward) {
       switch(level) {
         case 0:
