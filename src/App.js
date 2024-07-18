@@ -254,6 +254,9 @@ const Home = () => {
     if (imageSrc === Lvl_0) {
       return 'lvl_0';
     }
+    if (imageSrc === un_Lvl_0) {
+      return 'lvl_0';
+    }
     return '';
   };
 
