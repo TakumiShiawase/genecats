@@ -12,12 +12,17 @@ import Lvl_4 from './asset/landing/lvl_4.png';
 import Lvl_5 from './asset/landing/lvl_5.png';
 import Lvl_6 from './asset/landing/lvl_6.png';
 import Lvl_7 from './asset/landing/lvl_7.png';
-// import Lvl_8 from './asset/landing/lvl_8.png';
-import Flask from './asset/welcome/Flask.png';
-import Gems from './asset/welcome/Gems.png';
-import Heart from './asset/welcome/Heart.png';
-import Cancel from './asset/landing/Cancel.png';
+import un_Lvl_0 from './asset/landing/un_lvl_0.png';
+import un_Lvl_1 from './asset/landing/un_lvl_1.png';
+import un_Lvl_2 from './asset/landing/un_lvl_2.png';
+import un_Lvl_3 from './asset/landing/un_lvl_3.png';
+import un_Lvl_4 from './asset/landing/un_lvl_4.png';
+import un_Lvl_5 from './asset/landing/un_lvl_5.png';
+import un_Lvl_6 from './asset/landing/un_lvl_6.png';
+import un_Lvl_7 from './asset/landing/un_lvl_7.png';
+import Paw from './asset/landing/paw.png';
 
+import Cancel from './asset/landing/Cancel.png';
 
 
 function App() {
@@ -25,12 +30,10 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-
       </Routes>
     </Router>
   );
 }
-
 
 
 const Home = () => {
@@ -52,6 +55,7 @@ const Home = () => {
     invited_friends_count: 0,
     friends_needed_for_next_level: 0,
     next_level_referrals_needed: 0,
+    received_subscription_reward: false,
   });
 
   useEffect(() => {
@@ -133,50 +137,81 @@ const Home = () => {
   };
 
 
-  const updateImage = (level) => {
-    switch(level) {
-      case 0:
-        setImageSrc(Lvl_0);
-        break;
-      case 1:
-        setImageSrc(Lvl_1);
-        break;
-      case 2:
-        setImageSrc(Lvl_2);
-        break;
-      case 3:
-        setImageSrc(Lvl_3);
-        break;
-      case 4:
-        setImageSrc(Lvl_4);
-        break;
-      case 5:
-        setImageSrc(Lvl_5);
-        break;
-      case 6:
-        setImageSrc(Lvl_6);
-        break;
-      case 7:
-        setImageSrc(Lvl_7);
-        break;
-      // case 8:
-      //   setImageSrc(Lvl_8);
-      //   break;
-      default:
-        setImageSrc(Lvl_0); // Уровень по умолчанию
+  const updateImage = (level, received_subscription_reward) => {
+    if (received_subscription_reward) {
+      switch(level) {
+        case 0:
+          setImageSrc(Lvl_0);
+          break;
+        case 1:
+          setImageSrc(Lvl_1);
+          break;
+        case 2:
+          setImageSrc(Lvl_2);
+          break;
+        case 3:
+          setImageSrc(Lvl_3);
+          break;
+        case 4:
+          setImageSrc(Lvl_4);
+          break;
+        case 5:
+          setImageSrc(Lvl_5);
+          break;
+        case 6:
+          setImageSrc(Lvl_6);
+          break;
+        case 7:
+          setImageSrc(Lvl_7);
+          break;
+        // case 8:
+        //   setImageSrc(Lvl_8_reward);
+        //   break;
+        default:
+          setImageSrc(Lvl_0); // Уровень по умолчанию с вознаграждением
+      }
+    } else {
+      switch(level) {
+        case 0:
+          setImageSrc(un_Lvl_0);
+          break;
+        case 1:
+          setImageSrc(un_Lvl_1);
+          break;
+        case 2:
+          setImageSrc(un_Lvl_2);
+          break;
+        case 3:
+          setImageSrc(un_Lvl_3);
+          break;
+        case 4:
+          setImageSrc(un_Lvl_4);
+          break;
+        case 5:
+          setImageSrc(un_Lvl_5);
+          break;
+        case 6:
+          setImageSrc(un_Lvl_6);
+          break;
+        case 7:
+          setImageSrc(un_Lvl_7);
+          break;
+        // case 8:
+        //   setImageSrc(Lvl_8);
+        //   break;
+        default:
+          setImageSrc(un_Lvl_0); // Уровень по умолчанию
+      }
     }
   };
+
   const getLevelClass = () => {
     if (imageSrc === Lvl_0) {
       return 'lvl_0';
     }
     return '';
   };
-  let progressWidth = 0;
 
-  if (userData.next_level_referrals_needed !== 0 && !isNaN(userData.Friends_needed_for_next_level) && !isNaN(userData.next_level_referrals_needed)) {
-    progressWidth = (userData.Friends_needed_for_next_level / userData.next_level_referrals_needed) * 100;
-  }
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -219,7 +254,8 @@ const Home = () => {
       </div>
     );
   }
-
+  const difference = userData.friends_needed_for_next_level - userData.next_level_referrals_needed;
+   const progressWidth = (difference / userData.friends_needed_for_next_level) * 100
 
   return (
     <div className="game_page">
@@ -233,28 +269,28 @@ const Home = () => {
               <div className='modal_title'>The more friends You invite - the more coins and gifts You earn!</div>
               <div className='friend_content'>
                 <div className='friend_block'>
-                  <div className='friend_view'>1 friend</div>
+                  <div className='friend_view'>1 friend {userData.level > 0 && <img src={Paw} />}</div>
                   <div className='friend_bonus'>
-                    <div className='lawn_tile'>Lawn tile</div>
+                    <div className='friend_view'>Desert Moggy Cat</div>
                     <div className='friend_coin'>1000 CatyCoins</div>
                   </div>
                 </div>
                 <div className='friend_block'>
-                  <div className='friend_view'>2 friend</div>
+                  <div className='friend_view'>2 friend{userData.level > 1 && <img src={Paw} />}</div>
                   <div className='friend_bonus'>
                     <div className='siamese'>Siamese cat</div>
                     <div className='friend_coin'>2500 CatyCoins</div>
                   </div>
                 </div>
                 <div className='friend_block'>
-                  <div className='friend_view'>5 friend</div>
+                  <div className='friend_view'>5 friend {userData.level > 2 && <img src={Paw} />}</div>
                   <div className='friend_bonus'>
                     <div className='maine_coon'>Maine Coon cat</div>
                     <div className='friend_coin'>5000 CatyCoins</div>
                   </div>
                 </div>
                 <div className='friend_block'>
-                  <div className='friend_view'>10 friend</div>
+                  <div className='friend_view'>10 friend {userData.level > 3 && <img src={Paw} />}</div>
                   <div className='friend_bonus'>
                     <div className='ragdoll'>Ragdoll cat</div>
                     <div className='amethyst'>Amethyst</div>
@@ -262,7 +298,7 @@ const Home = () => {
                   </div>
                 </div>
                 <div className='friend_block'>
-                  <div className='friend_view'>25 friend</div>
+                  <div className='friend_view'>25 friend {userData.level > 4 && <img src={Paw} />}</div>
                   <div className='friend_bonus'>
                     <div className='peterbald'>Peterbald cat</div>
                     <div className='amethyst'>5 amethysts</div>
@@ -270,7 +306,7 @@ const Home = () => {
                   </div>
                 </div>
                 <div className='friend_block'>
-                  <div className='friend_view'>50 friend</div>
+                  <div className='friend_view'>50 friend {userData.level > 5 && <img src={Paw} />}</div>
                   <div className='friend_bonus'>
                     <div className='serengeti'>Serengeti cat</div>
                     <div className='amethyst'>20 amethysts</div>
@@ -278,7 +314,7 @@ const Home = () => {
                   </div>
                 </div>
                 <div className='friend_block'>
-                  <div className='friend_view'>100 friend</div>
+                  <div className='friend_view'>100 friend {userData.level > 6 && <img src={Paw} />}</div>
                   <div className='friend_bonus'>
                     <div className='british'>British Shorhair cat</div>
                     <div className='amethyst'>50 amethysts</div>
@@ -286,7 +322,7 @@ const Home = () => {
                   </div>
                 </div>
                 <div className='friend_block'>
-                  <div className='friend_view'>500 friend</div>
+                  <div className='friend_view'>500 friend {userData.level > 7 && <img src={Paw} />}</div>
                   <div className='friend_bonus'>
                     <div className='bengal'>Bengal cat</div>
                     <div className='amethyst'>100 amethysts</div>
@@ -295,7 +331,7 @@ const Home = () => {
                   </div>
                 </div>
                 <div className='friend_block'>
-                  <div className='friend_view'>2500 friend</div>
+                  <div className='friend_view'>2500 friend {userData.level > 8 && <img src={Paw} />}</div>
                   <div className='friend_bonus'>
                     <div className='sphynx'>Sphynx cat</div>
                     <div className='amethyst'>250 amethysts</div>
@@ -304,7 +340,7 @@ const Home = () => {
                   </div>
                 </div>
                 <div className='friend_block'>
-                  <div className='friend_view'>10000 friend</div>
+                  <div className='friend_view'>10000 friend {userData.level > 9 && <img src={Paw} />}</div>
                   <div className='friend_bonus'>
                     <div className='khao'>Khao Manee cat</div>
                     <div className='lawn_tile'>Lawn tile</div>
@@ -322,13 +358,15 @@ const Home = () => {
 
       <div className='landing_view'>GeneCats</div>
       <div className='info_block'>Invite friends to receive initial bonuses before the game is released. The initial bonus is available only to players who join before the project launches, as a token of appreciation for their support.</div>
-      <div className='cat_lvl_container'>  
-        <div className='cat_lvl_views'>Current Bonuses:</div>    
+      <div className='cat_lvl_container'>   
         <img className={`cats_lvl ${getLevelClass()}`} src={imageSrc} />
       </div>
       <div className='progress_info_container'>
         <div className="progress-bar_lvl">
-          <div className="progress" style={{ width: `${progressWidth}%` }}>
+          <div className="progress"        style={{
+          width: `${progressWidth}%`,
+          backgroundColor: '#791C9E'
+        }}>
             <span className="progress-text">Level {userData.level}</span>
           </div>
         </div>
@@ -351,9 +389,21 @@ const Home = () => {
 )}
         <button className='invite_button'onClick={openTelegramContacts}>Invite</button>
       </div>
+      <div className='join_block'>
+        <div className='join_text'>Join to community</div>
+        <button className='join_button'>Join</button>
+      </div>
+      <div>
+      {userData.received_subscription_reward ? (
+        <div className='join_true'>Reward Claimed</div>
+      ) : (
+        <div className='join_false'>Rewaard:<div className='join_claim'>Lawn Tile(Legendary)</div> </div>
+      )}
+      </div>
     </div>
   );
 }
+
 
 
 

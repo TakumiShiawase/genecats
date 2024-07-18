@@ -365,8 +365,41 @@ body {
   align-items: center;
   flex-direction: column;
 }
-
-
+.join_text{
+  color: white;
+  font-size: 14px;
+  margin-right: 10px;
+  font-weight: 200;
+}
+.join_button{
+  width: 66px;
+  height: 20px;
+  border-radius: 20px;
+  color: white;
+  background-color: #6A058A;
+  font-size: 14px;
+}
+.join_block{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.join_true{
+  color:#24FF00;
+  font-size: 14px;
+  font-weight: 200;
+  display: flex;
+  justify-content: center;
+}
+.join_claim{
+  color: #FF9900;
+  font-size: 14px;
+}
+.join_false{
+  color: white;
+  font-size: 14px;
+}
 .modal-close {
   position: absolute;
   top: 10px;
@@ -410,7 +443,11 @@ body {
   text-align: center;
   margin-bottom: 15px;
 }
-
+.friend_view img{
+  width: 32px;
+  height: 32px;
+  margin-left: 10px;
+}
 .friend_block{
   color: #fff;
   display: flex;
