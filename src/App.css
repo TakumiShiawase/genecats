@@ -374,6 +374,7 @@ body {
 .join_button{
   width: 66px;
   height: 20px;
+  border: none;
   border-radius: 20px;
   color: white;
   background-color: #6A058A;
@@ -399,6 +400,7 @@ body {
 .join_false{
   color: white;
   font-size: 14px;
+  display: flex;
 }
 .modal-close {
   position: absolute;
@@ -444,8 +446,8 @@ body {
   margin-bottom: 15px;
 }
 .friend_view img{
-  width: 32px;
-  height: 32px;
+  width: 12px;
+  height: 12px;
   margin-left: 10px;
 }
 .friend_block{

@@ -81,7 +81,6 @@ const Home = () => {
     invited_friends_count: 0,
     friends_needed_for_next_level: 0,
     next_level_referrals_needed: 0,
-    received_subscription_reward: false,
   });
 
   useEffect(() => {
