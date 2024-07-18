@@ -90,11 +90,13 @@ const Home = () => {
       const response = await axios.post('https://genecats.com/api/check_subscription/', {
         telegram_user_id
       });
-
+  
       const { data } = response;
       if (data === true) {
-        userData.received_subscription_reward = true;
-        window.location.reload();
+        setUserData((prevUserData) => ({
+          ...prevUserData,
+          received_subscription_reward: true,
+        }));
       } else {
         // Если ответ false, делаем нужные действия (например, показываем сообщение)
         console.log('Subscription check failed.');
@@ -437,7 +439,7 @@ const Home = () => {
         <button className='invite_button'onClick={openTelegramContacts}>Invite</button>
       </div>
       <div className='join_block'>
-        <div className='join_text'>Join to community</div>
+        <div className='join_text'>Join the community</div>
         <button className='join_button' onClick={() => window.open('https://t.me/GeneCats', '_blank')}>Join</button>
         <button className='join_button' onClick={handleCheckSubscription}>Claim</button>
       </div>
