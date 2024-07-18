@@ -109,9 +109,8 @@ body {
 
 .lvl_0 {
   width: 99%;
-  height: 255px;
   margin-left: 45px;
-  padding-right: 40px;
+  margin-right: 30px;
 }
 .cat_lvl_views{
   display: flex;
