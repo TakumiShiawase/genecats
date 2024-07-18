@@ -378,13 +378,16 @@ body {
   border-radius: 20px;
   color: white;
   background-color: #6A058A;
-  font-size: 14px;
+  font-size: 11px;
+  font-family: 'Gluten';
+  margin-right: 10px;
 }
 .join_block{
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 10px;
+  margin-top: 20px;
 }
 .join_true{
   color:#24FF00;
@@ -446,9 +449,13 @@ body {
   margin-bottom: 15px;
 }
 .friend_view img{
-  width: 12px;
-  height: 12px;
-  margin-left: 10px;
+  width: 20px;
+  height: 20px;
+  margin-left: 2px;
+}
+.friend_view{
+  display: flex;
+  align-items: center;
 }
 .friend_block{
   color: #fff;

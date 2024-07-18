@@ -416,7 +416,8 @@ const Home = () => {
       </div>
       <div className='join_block'>
         <div className='join_text'>Join to community</div>
-        <button className='join_button'>Join</button>
+        <button className='join_button' onClick={() => window.open('https://t.me/GeneCats', '_blank')}>Join</button>
+        <button className='join_button'>Claim</button>
       </div>
       <div>
       {userData.received_subscription_reward ? (
