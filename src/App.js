@@ -93,7 +93,7 @@ const Home = () => {
 
       const { data } = response;
       if (data === true) {
-        // Если ответ true, обновляем страницу
+        userData.received_subscription_reward = true;
         window.location.reload();
       } else {
         // Если ответ false, делаем нужные действия (например, показываем сообщение)
@@ -179,10 +179,10 @@ const Home = () => {
       window.open(telegramContactUrl, '_blank');
     }
   };
+  const reward = userData.received_subscription_reward
 
-
-  const updateImage = (level, received_subscription_reward) => {
-    if (received_subscription_reward) {
+  const updateImage = (level, reward) => {
+    if (reward) {
       switch(level) {
         case 0:
           setImageSrc(Lvl_0);
@@ -442,7 +442,7 @@ const Home = () => {
       {userData.received_subscription_reward ? (
         <div className='join_true'>Reward Claimed</div>
       ) : (
-        <div className='join_false'>Rewaard:<div className='join_claim'>Lawn Tile(Legendary)</div> </div>
+        <div className='join_false'>Reward:<div className='join_claim'>Lawn Tile(Legendary)</div> </div>
       )}
       </div>
     </div>
