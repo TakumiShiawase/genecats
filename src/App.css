@@ -455,7 +455,7 @@ body {
 }
 .friend_view{
   display: flex;
-  align-items: center;
+  justify-content: center;
 }
 .friend_block{
   color: #fff;
