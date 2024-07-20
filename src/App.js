@@ -224,22 +224,6 @@ const Home = () => {
       console.error('Could not copy text: ', err);
     });
   };
-
-  if (loading) {
-    return (
-      <div className="loading_page">
-        <div className='game_view'>GeneCats</div>
-        <img className='cat_avatar' src={Loading}/>
-        <div className="progress-bar">
-          <div className="progress" style={{ width: `${progress}%` }}></div>
-        </div>
-        <div className='loading_view'>loading...</div>
-      </div>
-    );
-  }
-  const difference = userData.friends_needed_for_next_level - userData.next_level_referrals_needed;
-  const progressWidth = (difference / userData.friends_needed_for_next_level) * 100
-
   const updateImage = (level) => {
     const reward = userData.received_subscription_reward
     if (reward) {
@@ -308,6 +292,24 @@ const Home = () => {
       }
     }
   };
+  const difference = userData.friends_needed_for_next_level - userData.next_level_referrals_needed;
+  const progressWidth = (difference / userData.friends_needed_for_next_level) * 100
+
+  if (loading) {
+    return (
+      <div className="loading_page">
+        <div className='game_view'>GeneCats</div>
+        <img className='cat_avatar' src={Loading}/>
+        <div className="progress-bar">
+          <div className="progress" style={{ width: `${progress}%` }}></div>
+        </div>
+        <div className='loading_view'>loading...</div>
+      </div>
+    );
+  }
+
+
+  
 
 
   return (
