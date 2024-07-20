@@ -154,7 +154,7 @@ const Home = () => {
         .then(data => {
           console.log("Fetched data:", data);
           setUserData(data);
-          updateImage(data.level);
+          updateImage(data.level, data.received_subscription_reward);
         })
         .catch(error => {
           console.error('Error fetching data:', error);
