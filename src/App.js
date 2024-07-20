@@ -143,6 +143,7 @@ const Home = () => {
           setShowMessage(false);
         }, 3000);
       }
+      updateImage(data.level, data.received_subscription_reward);
     } catch (error) {
       console.error('Error checking subscription:', error);
     }
