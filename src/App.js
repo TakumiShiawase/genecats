@@ -117,40 +117,31 @@ const Home = () => {
   }, [telegram_user_id]);
   
   const handleCheckSubscription = async () => {
-    // Если уже в процессе загрузки, не начинать новый запрос
-    if (loading) return;
-
-    setLoading(true); // Начинаем загрузку
-
     try {
+      // Отправляем запрос на сервер
       const response = await axios.post('https://genecats.com/api/check_subscription/', {
         telegram_user_id
       });
-
-      const { data } = response;
-      const receivedSubscriptionReward = data === true;
-
-      // Сравниваем текущее значение с новым значением
-      if (userData.received_subscription_reward !== receivedSubscriptionReward) {
-        setUserData(prevUserData => ({
-          ...prevUserData,
-          received_subscription_reward: receivedSubscriptionReward,
-        }));
-
-        // Устанавливаем соответствующее сообщение
-        setMessage(receivedSubscriptionReward ? 'Награда уже получена' : 'Вы не подписаны');
+  
+      // Проверяем статус подписки в ответе
+      const isSubscribed = response.data; // Предполагаем, что ответ — это булевое значение (true или false)
+  
+      if (isSubscribed === userData.received_subscription_reward) {
+        // Показать всплывающее сообщение в зависимости от статуса подписки
+        if (isSubscribed) {
+          alert('Награда получена');
+        } else {
+          alert('Вы не подписаны');
+        }
       } else {
-        // Если данные не изменились, просто устанавливаем сообщение
-        setMessage(receivedSubscriptionReward ? 'Награда уже получена' : 'Вы не подписаны');
+        // Перезагрузить страницу, если статус подписки изменился
+        window.location.reload();
       }
     } catch (error) {
       console.error('Ошибка при проверке подписки:', error);
-      setMessage('Ошибка при проверке подписки');
-    } finally {
-      setLoading(false); // Заканчиваем загрузку
+      // Обработка ошибки, если необходимо
     }
   };
-
 
   useEffect(() => {
     if (telegram_user_id) {
@@ -442,7 +433,6 @@ const Home = () => {
       ) : (
         <div className='join_false'>Reward:<div className='join_claim'>Lawn Tile(Legendary)</div> </div>
       )}
-      <div className='join_false'>{message}</div>
       </div>
     </div>
   );
