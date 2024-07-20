@@ -414,7 +414,7 @@ const Home = () => {
         </div>
       )}
 
-      <div className='landing_view'>GeneCats userData.received_subscription_reward</div>
+      <div className='landing_view'>GeneCats {userData.received_subscription_reward}</div>
       <div className='info_block'>Invite friends to receive initial bonuses before the game is released. The initial bonus is available only to players who join before the project launches, as a token of appreciation for their support.</div>
       <div className='cat_lvl_container'> 
 
