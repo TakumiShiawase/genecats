@@ -131,7 +131,7 @@ const Home = () => {
         }));
         // Или можно обновить другую часть состояния, чтобы отразить изменения
       } else {
-        alert(data)
+        alert(data,'hhelp')
         setMessage('You are not subscribed');
         setShowMessage(true);
         // Скрыть сообщение через 3 секунды
