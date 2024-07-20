@@ -124,14 +124,14 @@ const Home = () => {
     
       const { data } = response;
       if (data === true) {
-        // Обновляем состояние компонента для отражения изменений
+        alert(data)
         setUserData(prevUserData => ({
           ...prevUserData,
           received_subscription_reward: true,
         }));
         // Или можно обновить другую часть состояния, чтобы отразить изменения
       } else {
-        // Показ сообщения
+        alert(data)
         setMessage('You are not subscribed');
         setShowMessage(true);
         // Скрыть сообщение через 3 секунды
