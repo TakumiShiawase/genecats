@@ -64,7 +64,7 @@ function App() {
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
-  const [subscriptionStatus, setSubscriptionStatus] = useState(null);
+  const [showMessage, setShowMessage] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [progress, setProgress] = useState(0);
   const [message, setMessage] = useState('');
@@ -118,30 +118,33 @@ const Home = () => {
   
   const handleCheckSubscription = async () => {
     try {
-      // Отправляем запрос на сервер
       const response = await axios.post('https://genecats.com/api/check_subscription/', {
         telegram_user_id
       });
-  
-      // Проверяем статус подписки в ответе
-      const isSubscribed = response.data; // Предполагаем, что ответ — это булевое значение (true или false)
-  
-      if (isSubscribed === userData.received_subscription_reward) {
-        // Показать всплывающее сообщение в зависимости от статуса подписки
-        if (isSubscribed) {
-          alert('Награда получена');
-        } else {
-          alert('Вы не подписаны');
-        }
+    
+      const { data } = response;
+      if (data === true) {
+        // Обновляем состояние компонента для отражения изменений
+        setUserData(prevUserData => ({
+          ...prevUserData,
+          received_subscription_reward: true,
+        }));
+        // Или можно обновить другую часть состояния, чтобы отразить изменения
       } else {
-        // Перезагрузить страницу, если статус подписки изменился
-        window.location.reload();
+        // Показ сообщения
+        setMessage('You are not subscribed');
+        setShowMessage(true);
+        // Скрыть сообщение через 3 секунды
+        setTimeout(() => {
+          setShowMessage(false);
+        }, 3000);
       }
     } catch (error) {
-      console.error('Ошибка при проверке подписки:', error);
-      // Обработка ошибки, если необходимо
+      console.error('Error checking subscription:', error);
     }
   };
+
+
 
   useEffect(() => {
     if (telegram_user_id) {
@@ -434,6 +437,7 @@ const Home = () => {
         <div className='join_false'>Reward:<div className='join_claim'>Lawn Tile(Legendary)</div> </div>
       )}
       </div>
+      {showMessage && <div className='join_false'>{message}</div>}
     </div>
   );
 }
