@@ -118,20 +118,26 @@ const Home = () => {
   
   const handleCheckSubscription = async () => {
     try {
-      const response = await axios.post('https://genecats.com/api/check_subscription/', {
+      // Отправляем запрос для проверки подписки
+      await axios.post('https://genecats.com/api/check_subscription/', {
         telegram_user_id
       });
-    
-      const { data } = response;
-      if (data === true) {
-        alert('яиы')
+      
+      // После отправки запроса проверяем данные пользователя
+      const gameResponse = await axios.post('https://genecats.com/api/game/', {
+        telegram_user_id
+      });
+  
+      const { data } = gameResponse;
+      
+      if (data.received_subscription_reward) {
+        alert('Subscription reward received!');
         setUserData(prevUserData => ({
           ...prevUserData,
           received_subscription_reward: true,
         }));
-        // Или можно обновить другую часть состояния, чтобы отразить изменения
       } else {
-        alert('hhelp')
+        alert('Subscription not confirmed.');
         setMessage('You are not subscribed');
         setShowMessage(true);
         // Скрыть сообщение через 3 секунды
@@ -143,6 +149,7 @@ const Home = () => {
       console.error('Error checking subscription:', error);
     }
   };
+  
 
 
 
