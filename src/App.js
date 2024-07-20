@@ -82,7 +82,6 @@ const Home = () => {
     invited_friends_count: 0,
     friends_needed_for_next_level: 0,
     next_level_referrals_needed: 0,
-    received_subscription_reward: false, 
   });
   const params = new URLSearchParams(location.search);
   const telegram_user_id = params.get('telegram_user_id');
@@ -260,73 +259,39 @@ const Home = () => {
     });
   };
   const updateImage = (level) => {
-    const reward = userData.received_subscription_reward
-    if (reward) {
-      switch(level) {
-        case 0:
-          setImageSrc(Lvl_0);
-          break;
-        case 1:
-          setImageSrc(Lvl_1);
-          break;
-        case 2:
-          setImageSrc(Lvl_2);
-          break;
-        case 3:
-          setImageSrc(Lvl_3);
-          break;
-        case 4:
-          setImageSrc(Lvl_4);
-          break;
-        case 5:
-          setImageSrc(Lvl_5);
-          break;
-        case 6:
-          setImageSrc(Lvl_6);
-          break;
-        case 7:
-          setImageSrc(Lvl_7);
-          break;
-        // case 8:
-        //   setImageSrc(Lvl_8_reward);
-        //   break;
-        default:
-          setImageSrc(Lvl_0); // Уровень по умолчанию с вознаграждением
-      }
-    } if (!reward) {
-      switch(level) {
-        case 0:
-          setImageSrc(un_Lvl_0);
-          break;
-        case 1:
-          setImageSrc(un_Lvl_1);
-          break;
-        case 2:
-          setImageSrc(un_Lvl_2);
-          break;
-        case 3:
-          setImageSrc(un_Lvl_3);
-          break;
-        case 4:
-          setImageSrc(un_Lvl_4);
-          break;
-        case 5:
-          setImageSrc(un_Lvl_5);
-          break;
-        case 6:
-          setImageSrc(un_Lvl_6);
-          break;
-        case 7:
-          setImageSrc(un_Lvl_7);
-          break;
-        // case 8:
-        //   setImageSrc(Lvl_8);
-        //   break;
-        default:
-          setImageSrc(un_Lvl_0); // Уровень по умолчанию
-      }
+    // Прямо проверяем состояние userData.received_subscription_reward внутри switch-case
+    switch (level) {
+      case 0:
+        setImageSrc(userData.received_subscription_reward ? Lvl_0 : un_Lvl_0);
+        break;
+      case 1:
+        setImageSrc(userData.received_subscription_reward ? Lvl_1 : un_Lvl_1);
+        break;
+      case 2:
+        setImageSrc(userData.received_subscription_reward ? Lvl_2 : un_Lvl_2);
+        break;
+      case 3:
+        setImageSrc(userData.received_subscription_reward ? Lvl_3 : un_Lvl_3);
+        break;
+      case 4:
+        setImageSrc(userData.received_subscription_reward ? Lvl_4 : un_Lvl_4);
+        break;
+      case 5:
+        setImageSrc(userData.received_subscription_reward ? Lvl_5 : un_Lvl_5);
+        break;
+      case 6:
+        setImageSrc(userData.received_subscription_reward ? Lvl_6 : un_Lvl_6);
+        break;
+      case 7:
+        setImageSrc(userData.received_subscription_reward ? Lvl_7 : un_Lvl_7);
+        break;
+      // Добавьте case для уровня 8 или других уровней, если необходимо
+      default:
+        setImageSrc(userData.received_subscription_reward ? Lvl_0 : un_Lvl_0); // Уровень по умолчанию
     }
-    alert(`Level: ${level}, Reward: ${reward}`);
+  
+    // Отображаем сообщение
+    alert(`Level: ${level}, Reward: ${userData.received_subscription_reward}`);
   };
   const difference = userData.friends_needed_for_next_level - userData.next_level_referrals_needed;
   const progressWidth = (difference / userData.friends_needed_for_next_level) * 100
