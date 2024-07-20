@@ -67,6 +67,7 @@ const Home = () => {
   const [subscriptionStatus, setSubscriptionStatus] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [message, setMessage] = useState('');
   const [imageSrc, setImageSrc] = useState(null);
   const [minLoadingTimePassed, setMinLoadingTimePassed] = useState(false);
   const openModal = () => setIsModalOpen(true);
@@ -107,7 +108,6 @@ const Home = () => {
             ...data, // Обновляем данные пользователя
           }));
           updateImage(data.level,data.received_subscription_reward);
-          alert(data.received_subscription_reward)
         })
         .catch(error => {
           console.error('Error fetching data:', error);
@@ -117,23 +117,28 @@ const Home = () => {
   }, [telegram_user_id]);
   
   const handleCheckSubscription = async () => {
+    setLoading(true); // Начинаем загрузку
+
     try {
       const response = await axios.post('https://genecats.com/api/check_subscription/', {
         telegram_user_id
       });
-    
+
       const { data } = response;
       if (data === true) {
         setUserData(prevUserData => ({
           ...prevUserData,
           received_subscription_reward: true,
         }));
+        setMessage('Награда уже получена');
       } else {
-        // Если ответ false, делаем нужные действия (например, показываем сообщение)
-        console.log('Subscription check failed.');
+        setMessage('Вы не подписаны');
       }
     } catch (error) {
       console.error('Error checking subscription:', error);
+      setMessage('Ошибка при проверке подписки');
+    } finally {
+      setLoading(false); // Заканчиваем загрузку
     }
   };
 
@@ -259,13 +264,10 @@ const Home = () => {
       case 7:
         setImageSrc(receivedSubscriptionReward ? Lvl_7 : un_Lvl_7);
         break;
-      // Добавьте case для уровня 8 или других уровней, если необходимо
       default:
-        setImageSrc(receivedSubscriptionReward ? Lvl_0 : un_Lvl_0); // Уровень по умолчанию
+        setImageSrc(receivedSubscriptionReward ? Lvl_0 : un_Lvl_0); 
     }
   
-    // Отображаем сообщение
-    alert(`Level: ${level}, Reward: ${receivedSubscriptionReward}`);
   };
   const difference = userData.friends_needed_for_next_level - userData.next_level_referrals_needed;
   const progressWidth = (difference / userData.friends_needed_for_next_level) * 100
