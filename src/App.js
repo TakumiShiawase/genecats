@@ -117,6 +117,9 @@ const Home = () => {
   }, [telegram_user_id]);
   
   const handleCheckSubscription = async () => {
+    // Если уже в процессе загрузки, не начинать новый запрос
+    if (loading) return;
+
     setLoading(true); // Начинаем загрузку
 
     try {
@@ -125,17 +128,23 @@ const Home = () => {
       });
 
       const { data } = response;
-      if (data === true) {
+      const receivedSubscriptionReward = data === true;
+
+      // Сравниваем текущее значение с новым значением
+      if (userData.received_subscription_reward !== receivedSubscriptionReward) {
         setUserData(prevUserData => ({
           ...prevUserData,
-          received_subscription_reward: true,
+          received_subscription_reward: receivedSubscriptionReward,
         }));
-        setMessage('Награда уже получена');
+
+        // Устанавливаем соответствующее сообщение
+        setMessage(receivedSubscriptionReward ? 'Награда уже получена' : 'Вы не подписаны');
       } else {
-        setMessage('Вы не подписаны');
+        // Если данные не изменились, просто устанавливаем сообщение
+        setMessage(receivedSubscriptionReward ? 'Награда уже получена' : 'Вы не подписаны');
       }
     } catch (error) {
-      console.error('Error checking subscription:', error);
+      console.error('Ошибка при проверке подписки:', error);
       setMessage('Ошибка при проверке подписки');
     } finally {
       setLoading(false); // Заканчиваем загрузку
@@ -433,6 +442,7 @@ const Home = () => {
       ) : (
         <div className='join_false'>Reward:<div className='join_claim'>Lawn Tile(Legendary)</div> </div>
       )}
+      <div className='join_false'>{message}</div>
       </div>
     </div>
   );
