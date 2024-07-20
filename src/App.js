@@ -185,34 +185,35 @@ const Home = () => {
 
   const updateImage = (level) => {
     const reward = userData.received_subscription_reward;
-    switch(level) {
-      case 0:
-        setImageSrc(reward ? Lvl_0 : un_Lvl_0);
-        break;
-      case 1:
-        setImageSrc(reward ? Lvl_1 : un_Lvl_1);
-        break;
-      case 2:
-        setImageSrc(reward ? Lvl_2 : un_Lvl_2);
-        break;
-      case 3:
-        setImageSrc(reward ? Lvl_3 : un_Lvl_3);
-        break;
-      case 4:
-        setImageSrc(reward ? Lvl_4 : un_Lvl_4);
-        break;
-      case 5:
-        setImageSrc(reward ? Lvl_5 : un_Lvl_5);
-        break;
-      case 6:
-        setImageSrc(reward ? Lvl_6 : un_Lvl_6);
-        break;
-      case 7:
-        setImageSrc(reward ? Lvl_7 : un_Lvl_7);
-        break;
-      default:
-        setImageSrc(reward ? Lvl_0 : un_Lvl_0); // Уровень по умолчанию
-    }
+    
+    const rewardImages = {
+      0: Lvl_0,
+      1: Lvl_1,
+      2: Lvl_2,
+      3: Lvl_3,
+      4: Lvl_4,
+      5: Lvl_5,
+      6: Lvl_6,
+      7: Lvl_7,
+      // 8: Lvl_8_reward, // Uncomment if needed
+    };
+  
+    const unRewardImages = {
+      0: un_Lvl_0,
+      1: un_Lvl_1,
+      2: un_Lvl_2,
+      3: un_Lvl_3,
+      4: un_Lvl_4,
+      5: un_Lvl_5,
+      6: un_Lvl_6,
+      7: un_Lvl_7,
+      // 8: Lvl_8, // Uncomment if needed
+    };
+  
+    const images = reward ? rewardImages : unRewardImages;
+    const defaultImage = reward ? Lvl_0 : un_Lvl_0;
+  
+    setImageSrc(images[level] || defaultImage);
   };
 
   const getLevelClass = () => {
