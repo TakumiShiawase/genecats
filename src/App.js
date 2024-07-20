@@ -183,82 +183,7 @@ const Home = () => {
   };
 
 
-  const updateImageWithReward = (level) => {
-    switch(level) {
-      case 0:
-        setImageSrc(Lvl_0);
-        break;
-      case 1:
-        setImageSrc(Lvl_1);
-        break;
-      case 2:
-        setImageSrc(Lvl_2);
-        break;
-      case 3:
-        setImageSrc(Lvl_3);
-        break;
-      case 4:
-        setImageSrc(Lvl_4);
-        break;
-      case 5:
-        setImageSrc(Lvl_5);
-        break;
-      case 6:
-        setImageSrc(Lvl_6);
-        break;
-      case 7:
-        setImageSrc(Lvl_7);
-        break;
-      // case 8:
-      //   setImageSrc(Lvl_8_reward);
-      //   break;
-      default:
-        setImageSrc(Lvl_0); // Уровень по умолчанию с вознаграждением
-    }
-  };
-  
-  const updateImageWithoutReward = (level) => {
-    switch(level) {
-      case 0:
-        setImageSrc(un_Lvl_0);
-        break;
-      case 1:
-        setImageSrc(un_Lvl_1);
-        break;
-      case 2:
-        setImageSrc(un_Lvl_2);
-        break;
-      case 3:
-        setImageSrc(un_Lvl_3);
-        break;
-      case 4:
-        setImageSrc(un_Lvl_4);
-        break;
-      case 5:
-        setImageSrc(un_Lvl_5);
-        break;
-      case 6:
-        setImageSrc(un_Lvl_6);
-        break;
-      case 7:
-        setImageSrc(un_Lvl_7);
-        break;
-      // case 8:
-      //   setImageSrc(Lvl_8);
-      //   break;
-      default:
-        setImageSrc(un_Lvl_0); // Уровень по умолчанию
-    }
-  };
-  
-  const updateImage = (level) => {
-    const reward = userData.received_subscription_reward;
-    if (reward) {
-      updateImageWithReward(level);
-    } else {
-      updateImageWithoutReward(level);
-    }
-  };
+
 
   const getLevelClass = () => {
     if (imageSrc === Lvl_0) {
@@ -313,7 +238,77 @@ const Home = () => {
     );
   }
   const difference = userData.friends_needed_for_next_level - userData.next_level_referrals_needed;
-   const progressWidth = (difference / userData.friends_needed_for_next_level) * 100
+  const progressWidth = (difference / userData.friends_needed_for_next_level) * 100
+
+  const updateImage = (level) => {
+    const reward = userData.received_subscription_reward
+    if (reward) {
+      switch(level) {
+        case 0:
+          setImageSrc(Lvl_0);
+          break;
+        case 1:
+          setImageSrc(Lvl_1);
+          break;
+        case 2:
+          setImageSrc(Lvl_2);
+          break;
+        case 3:
+          setImageSrc(Lvl_3);
+          break;
+        case 4:
+          setImageSrc(Lvl_4);
+          break;
+        case 5:
+          setImageSrc(Lvl_5);
+          break;
+        case 6:
+          setImageSrc(Lvl_6);
+          break;
+        case 7:
+          setImageSrc(Lvl_7);
+          break;
+        // case 8:
+        //   setImageSrc(Lvl_8_reward);
+        //   break;
+        default:
+          setImageSrc(Lvl_0); // Уровень по умолчанию с вознаграждением
+      }
+    } else {
+      switch(level) {
+        case 0:
+          setImageSrc(un_Lvl_0);
+          break;
+        case 1:
+          setImageSrc(un_Lvl_1);
+          break;
+        case 2:
+          setImageSrc(un_Lvl_2);
+          break;
+        case 3:
+          setImageSrc(un_Lvl_3);
+          break;
+        case 4:
+          setImageSrc(un_Lvl_4);
+          break;
+        case 5:
+          setImageSrc(un_Lvl_5);
+          break;
+        case 6:
+          setImageSrc(un_Lvl_6);
+          break;
+        case 7:
+          setImageSrc(un_Lvl_7);
+          break;
+        // case 8:
+        //   setImageSrc(Lvl_8);
+        //   break;
+        default:
+          setImageSrc(un_Lvl_0); // Уровень по умолчанию
+      }
+    }
+  };
+
 
   return (
     <div className="game_page">
@@ -414,7 +409,7 @@ const Home = () => {
         </div>
       )}
 
-      <div className='landing_view'>GeneCats <div className='landing_view'>GeneCats {userData.received_subscription_reward.toString()}</div></div>
+      <div className='landing_view'>GeneCats</div>
       <div className='info_block'>Invite friends to receive initial bonuses before the game is released. The initial bonus is available only to players who join before the project launches, as a token of appreciation for their support.</div>
       <div className='cat_lvl_container'> 
 
