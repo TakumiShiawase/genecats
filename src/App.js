@@ -116,7 +116,33 @@ const Home = () => {
     }
   }, [telegram_user_id]);
   
-
+  const handleCheckSubscription = async () => {
+    try {
+      const response = await axios.post('https://genecats.com/api/check_subscription/', {
+        telegram_user_id
+      });
+    
+      const { data } = response;
+      if (data === true) {
+        // Обновляем состояние компонента для отражения изменений
+        setUserData(prevUserData => ({
+          ...prevUserData,
+          received_subscription_reward: true,
+        }));
+        // Или можно обновить другую часть состояния, чтобы отразить изменения
+      } else {
+        // Показ сообщения
+        setMessage('You are not subscribed');
+        setShowMessage(true);
+        // Скрыть сообщение через 3 секунды
+        setTimeout(() => {
+          setShowMessage(false);
+        }, 3000);
+      }
+    } catch (error) {
+      console.error('Error checking subscription:', error);
+    }
+  };
 
 
 
@@ -397,7 +423,7 @@ const Home = () => {
       <div className='join_block'>
         <div className='join_text'>Join the community</div>
         <button className='join_button' onClick={() => window.open('https://t.me/GeneCats', '_blank')}>Join</button>
-        <button className='join_button' >Claim</button>
+        <button className='join_button' onClick={handleCheckSubscription}>Claim</button>
       </div>
       <div>
       {userData.received_subscription_reward ? (
