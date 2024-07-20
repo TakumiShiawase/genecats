@@ -106,7 +106,7 @@ const Home = () => {
             ...prevUserData,
             ...data, // Обновляем данные пользователя
           }));
-          updateImage(data.level);
+          updateImage(data.level.data.received_subscription_reward);
         })
         .catch(error => {
           console.error('Error fetching data:', error);
@@ -114,7 +114,26 @@ const Home = () => {
         });
     }
   }, [telegram_user_id]); 
-
+  const handleCheckSubscription = async () => {
+    try {
+      const response = await axios.post('https://genecats.com/api/check_subscription/', {
+        telegram_user_id
+      });
+  
+      const { data } = response;
+      if (data === true) {
+        setUserData(prevUserData => ({
+          ...prevUserData,
+          received_subscription_reward: true,
+        }));
+      } else {
+        // Если ответ false, делаем нужные действия (например, показываем сообщение)
+        console.log('Subscription check failed.');
+      }
+    } catch (error) {
+      console.error('Error checking subscription:', error);
+    }
+  };
   useEffect(() => {
     if (telegram_user_id) {
       fetch('https://genecats.com/api/game/', {
@@ -145,6 +164,11 @@ const Home = () => {
   }, [location]);
 
 
+  useEffect(() => {
+    if (telegram_user_id) {
+      handleCheckSubscription();
+    }
+  }, [telegram_user_id]);
 
   useEffect(() => {
     const minLoadingTime = 1500; // Минимальное время загрузки в миллисекундах
@@ -234,40 +258,40 @@ const Home = () => {
       console.error('Could not copy text: ', err);
     });
   };
-  const updateImage = (level) => {
+  const updateImage = (level,receivedSubscriptionReward) => {
     // Прямо проверяем состояние userData.received_subscription_reward внутри switch-case
     switch (level) {
       case 0:
-        setImageSrc(userData.received_subscription_reward ? Lvl_0 : un_Lvl_0);
+        setImageSrc(receivedSubscriptionReward ? Lvl_0 : un_Lvl_0);
         break;
       case 1:
-        setImageSrc(userData.received_subscription_reward ? Lvl_1 : un_Lvl_1);
+        setImageSrc(receivedSubscriptionReward ? Lvl_1 : un_Lvl_1);
         break;
       case 2:
-        setImageSrc(userData.received_subscription_reward ? Lvl_2 : un_Lvl_2);
+        setImageSrc(receivedSubscriptionReward ? Lvl_2 : un_Lvl_2);
         break;
       case 3:
-        setImageSrc(userData.received_subscription_reward ? Lvl_3 : un_Lvl_3);
+        setImageSrc(receivedSubscriptionReward ? Lvl_3 : un_Lvl_3);
         break;
       case 4:
-        setImageSrc(userData.received_subscription_reward ? Lvl_4 : un_Lvl_4);
+        setImageSrc(receivedSubscriptionReward ? Lvl_4 : un_Lvl_4);
         break;
       case 5:
-        setImageSrc(userData.received_subscription_reward ? Lvl_5 : un_Lvl_5);
+        setImageSrc(receivedSubscriptionReward ? Lvl_5 : un_Lvl_5);
         break;
       case 6:
-        setImageSrc(userData.received_subscription_reward ? Lvl_6 : un_Lvl_6);
+        setImageSrc(receivedSubscriptionReward ? Lvl_6 : un_Lvl_6);
         break;
       case 7:
-        setImageSrc(userData.received_subscription_reward ? Lvl_7 : un_Lvl_7);
+        setImageSrc(receivedSubscriptionReward ? Lvl_7 : un_Lvl_7);
         break;
       // Добавьте case для уровня 8 или других уровней, если необходимо
       default:
-        setImageSrc(userData.received_subscription_reward ? Lvl_0 : un_Lvl_0); // Уровень по умолчанию
+        setImageSrc(receivedSubscriptionReward ? Lvl_0 : un_Lvl_0); // Уровень по умолчанию
     }
   
     // Отображаем сообщение
-    alert(`Level: ${level}, Reward: ${userData.received_subscription_reward}`);
+    alert(`Level: ${level}, Reward: ${receivedSubscriptionReward}`);
   };
   const difference = userData.friends_needed_for_next_level - userData.next_level_referrals_needed;
   const progressWidth = (difference / userData.friends_needed_for_next_level) * 100
@@ -425,7 +449,7 @@ const Home = () => {
       <div className='join_block'>
         <div className='join_text'>Join the community</div>
         <button className='join_button' onClick={() => window.open('https://t.me/GeneCats', '_blank')}>Join</button>
-        <button className='join_button' >Claim</button>
+        <button className='join_button' onClick={handleCheckSubscription}>Claim</button>
       </div>
       <div>
       {userData.received_subscription_reward ? (
