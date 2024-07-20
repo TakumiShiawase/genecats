@@ -106,8 +106,6 @@ const Home = () => {
     }
   };
   useEffect(() => {
-
-  
     if (telegram_user_id) {
       fetch('https://genecats.com/api/game/', {
         method: 'POST',
@@ -125,6 +123,7 @@ const Home = () => {
           return response.json();
         })
         .then(data => {
+          console.log("Fetched data:", data);
           setUserData(data);
           updateImage(data.level);
         })
