@@ -124,14 +124,14 @@ const Home = () => {
     
       const { data } = response;
       if (data === true) {
-        alert(data)
+        alert('яиы')
         setUserData(prevUserData => ({
           ...prevUserData,
           received_subscription_reward: true,
         }));
         // Или можно обновить другую часть состояния, чтобы отразить изменения
       } else {
-        alert(data,'hhelp')
+        alert('hhelp')
         setMessage('You are not subscribed');
         setShowMessage(true);
         // Скрыть сообщение через 3 секунды
