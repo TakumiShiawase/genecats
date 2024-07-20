@@ -131,13 +131,11 @@ const Home = () => {
       const { data } = gameResponse;
       
       if (data.received_subscription_reward) {
-        alert('Subscription reward received!');
         setUserData(prevUserData => ({
           ...prevUserData,
           received_subscription_reward: true,
         }));
       } else {
-        alert('Subscription not confirmed.');
         setMessage('You are not subscribed');
         setShowMessage(true);
         // Скрыть сообщение через 3 секунды
@@ -439,7 +437,7 @@ const Home = () => {
         <div className='join_false'>Reward:<div className='join_claim'>Lawn Tile(Legendary)</div> </div>
       )}
       </div>
-      {showMessage && <div className='join_false'>{message}</div>}
+      {showMessage && <div className='join_false_sub'>{message}</div>}
     </div>
   );
 }

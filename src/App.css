@@ -405,6 +405,12 @@ body {
   font-size: 14px;
   display: flex;
 }
+.join_false_sub{
+  color: white;
+  font-size: 14px;
+  display: flex;
+  margin-top: 15px;
+}
 .modal-close {
   position: absolute;
   top: 10px;
