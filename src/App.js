@@ -258,7 +258,7 @@ const Home = () => {
         default:
           setImageSrc(Lvl_0); // Уровень по умолчанию с вознаграждением
       }
-    } else {
+    } if (!reward) {
       switch(level) {
         case 0:
           setImageSrc(un_Lvl_0);
