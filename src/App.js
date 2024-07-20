@@ -290,6 +290,7 @@ const Home = () => {
           setImageSrc(un_Lvl_0); // Уровень по умолчанию
       }
     }
+    alert(`Level: ${level}, Reward: ${reward}`);
   };
   const difference = userData.friends_needed_for_next_level - userData.next_level_referrals_needed;
   const progressWidth = (difference / userData.friends_needed_for_next_level) * 100
