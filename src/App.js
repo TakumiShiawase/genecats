@@ -82,9 +82,39 @@ const Home = () => {
     invited_friends_count: 0,
     friends_needed_for_next_level: 0,
     next_level_referrals_needed: 0,
+    received_subscription_reward: false, 
   });
   const params = new URLSearchParams(location.search);
   const telegram_user_id = params.get('telegram_user_id');
+  useEffect(() => {
+    if (telegram_user_id) {
+      fetch('https://genecats.com/api/game/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ telegram_user_id }),
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log("Fetched data:", data);
+          setUserData(prevUserData => ({
+            ...prevUserData,
+            ...data, // Обновляем данные пользователя
+          }));
+          updateImage(data.level);
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+          setLoading(false);
+        });
+    }
+  }, [telegram_user_id]); 
   const handleCheckSubscription = async () => {
     try {
       const response = await axios.post('https://genecats.com/api/check_subscription/', {
@@ -93,7 +123,7 @@ const Home = () => {
   
       const { data } = response;
       if (data === true) {
-        setUserData((prevUserData) => ({
+        setUserData(prevUserData => ({
           ...prevUserData,
           received_subscription_reward: true,
         }));
@@ -134,6 +164,12 @@ const Home = () => {
     }
   }, [location]);
 
+
+  useEffect(() => {
+    if (telegram_user_id) {
+      handleCheckSubscription();
+    }
+  }, [telegram_user_id]);
 
   useEffect(() => {
     const minLoadingTime = 1500; // Минимальное время загрузки в миллисекундах
