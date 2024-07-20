@@ -106,20 +106,22 @@ const Home = () => {
             ...prevUserData,
             ...data, // Обновляем данные пользователя
           }));
-          updateImage(data.level.data.received_subscription_reward);
+          updateImage(data.level,data.received_subscription_reward);
+          alert(data.received_subscription_reward)
         })
         .catch(error => {
           console.error('Error fetching data:', error);
           setLoading(false);
         });
     }
-  }, [telegram_user_id]); 
+  }, [telegram_user_id]);
+  
   const handleCheckSubscription = async () => {
     try {
       const response = await axios.post('https://genecats.com/api/check_subscription/', {
         telegram_user_id
       });
-  
+    
       const { data } = response;
       if (data === true) {
         setUserData(prevUserData => ({
@@ -134,34 +136,6 @@ const Home = () => {
       console.error('Error checking subscription:', error);
     }
   };
-  useEffect(() => {
-    if (telegram_user_id) {
-      fetch('https://genecats.com/api/game/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          telegram_user_id,
-        }),
-      })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          return response.json();
-        })
-        .then(data => {
-          console.log("Fetched data:", data);
-          setUserData(data);
-          updateImage(data.level, data.received_subscription_reward);
-        })
-        .catch(error => {
-          console.error('Error fetching data:', error);
-          setLoading(false);
-        });
-    }
-  }, [location]);
 
 
   useEffect(() => {
