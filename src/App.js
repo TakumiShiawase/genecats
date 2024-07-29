@@ -131,6 +131,7 @@ const Home = () => {
       const { data } = gameResponse;
       
       if (data.received_subscription_reward) {
+        
         setUserData(prevUserData => ({
           ...prevUserData,
           received_subscription_reward: true,
@@ -149,7 +150,7 @@ const Home = () => {
     }
   };
   
-
+  
 
 
 
@@ -273,8 +274,10 @@ const Home = () => {
     }
   
   };
-  const difference = userData.friends_needed_for_next_level - userData.next_level_referrals_needed;
-  const progressWidth = (difference / userData.friends_needed_for_next_level) * 100
+
+  const totalNeededForNextLevel = userData.next_level_referrals_needed;
+  const remainingToNextLevel = userData.friends_needed_for_next_level;
+  const progressWidth = ((totalNeededForNextLevel - remainingToNextLevel) / totalNeededForNextLevel) * 100;
 
   if (loading) {
     return (
@@ -312,21 +315,21 @@ const Home = () => {
                   </div>
                 </div>
                 <div className='friend_block'>
-                  <div className='friend_view'>2 friend{userData.level > 1 && <img src={Paw} />}</div>
+                  <div className='friend_view'>2 friends{userData.level > 1 && <img src={Paw} />}</div>
                   <div className='friend_bonus'>
                     <div className='siamese'>Siamese cat</div>
                     <div className='friend_coin'>2500 CatyCoins</div>
                   </div>
                 </div>
                 <div className='friend_block'>
-                  <div className='friend_view'>5 friend {userData.level > 2 && <img src={Paw} />}</div>
+                  <div className='friend_view'>5 friends {userData.level > 2 && <img src={Paw} />}</div>
                   <div className='friend_bonus'>
                     <div className='maine_coon'>Maine Coon cat</div>
                     <div className='friend_coin'>5000 CatyCoins</div>
                   </div>
                 </div>
                 <div className='friend_block'>
-                  <div className='friend_view'>10 friend {userData.level > 3 && <img src={Paw} />}</div>
+                  <div className='friend_view'>10 friends {userData.level > 3 && <img src={Paw} />}</div>
                   <div className='friend_bonus'>
                     <div className='ragdoll'>Ragdoll cat</div>
                     <div className='amethyst'>Amethyst</div>
@@ -334,7 +337,7 @@ const Home = () => {
                   </div>
                 </div>
                 <div className='friend_block'>
-                  <div className='friend_view'>25 friend {userData.level > 4 && <img src={Paw} />}</div>
+                  <div className='friend_view'>25 friends {userData.level > 4 && <img src={Paw} />}</div>
                   <div className='friend_bonus'>
                     <div className='peterbald'>Peterbald cat</div>
                     <div className='amethyst'>5 amethysts</div>
@@ -342,7 +345,7 @@ const Home = () => {
                   </div>
                 </div>
                 <div className='friend_block'>
-                  <div className='friend_view'>50 friend {userData.level > 5 && <img src={Paw} />}</div>
+                  <div className='friend_view'>50 friends {userData.level > 5 && <img src={Paw} />}</div>
                   <div className='friend_bonus'>
                     <div className='serengeti'>Serengeti cat</div>
                     <div className='amethyst'>20 amethysts</div>
@@ -350,7 +353,7 @@ const Home = () => {
                   </div>
                 </div>
                 <div className='friend_block'>
-                  <div className='friend_view'>100 friend {userData.level > 6 && <img src={Paw} />}</div>
+                  <div className='friend_view'>100 friends {userData.level > 6 && <img src={Paw} />}</div>
                   <div className='friend_bonus'>
                     <div className='british'>British Shorhair cat</div>
                     <div className='amethyst'>50 amethysts</div>
@@ -358,7 +361,7 @@ const Home = () => {
                   </div>
                 </div>
                 <div className='friend_block'>
-                  <div className='friend_view'>500 friend {userData.level > 7 && <img src={Paw} />}</div>
+                  <div className='friend_view'>500 friends {userData.level > 7 && <img src={Paw} />}</div>
                   <div className='friend_bonus'>
                     <div className='bengal'>Bengal cat</div>
                     <div className='amethyst'>100 amethysts</div>
@@ -367,7 +370,7 @@ const Home = () => {
                   </div>
                 </div>
                 <div className='friend_block'>
-                  <div className='friend_view'>2500 friend {userData.level > 8 && <img src={Paw} />}</div>
+                  <div className='friend_view'>2500 friends {userData.level > 8 && <img src={Paw} />}</div>
                   <div className='friend_bonus'>
                     <div className='sphynx'>Sphynx cat</div>
                     <div className='amethyst'>250 amethysts</div>
@@ -376,7 +379,7 @@ const Home = () => {
                   </div>
                 </div>
                 <div className='friend_block'>
-                  <div className='friend_view'>10000 friend {userData.level > 9 && <img src={Paw} />}</div>
+                  <div className='friend_view'>10000 friends {userData.level > 9 && <img src={Paw} />}</div>
                   <div className='friend_bonus'>
                     <div className='khao'>Khao Manee cat</div>
                     <div className='lawn_tile'>Lawn tile</div>
