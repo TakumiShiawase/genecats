@@ -108,7 +108,10 @@ body {
 }
 @media (min-width: 600px) and (max-width: 999px) {
   .cats_lvl {
-    height: 80%;
+    height: 70%;
+  }
+  .lvl_0 {
+    height: 70%; 
   }
 }
 
