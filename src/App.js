@@ -322,7 +322,7 @@ const Home = () => {
   const totalNeededForNextLevel = userData.next_level_referrals_needed;
   const remainingToNextLevel = userData.friends_needed_for_next_level;
   // const progressWidth = ((totalNeededForNextLevel - remainingToNextLevel) / totalNeededForNextLevel) * 100;
-  const progressWidth = (totalFriends - userData.friends_needed_for_next_level) * 100;
+  const progressWidth = (totalFriends / userData.friends_needed_for_next_level) * 100;
   if (loading) {
     return (
       <div className="loading_page">
@@ -351,7 +351,7 @@ const Home = () => {
               <div className='modal_title'>The more friends You invite - the more coins and gifts You earn!</div>
               <div className='friend_content'>
                 <div className='friend_block'>
-                  <div className='friend_view'>1 friend{progressWidth} {userData.level > 0 && <img src={Paw} />}</div>
+                  <div className='friend_view'>1 friend {userData.level > 0 && <img src={Paw} />}</div>
                   <div className='friend_bonus'>
                     <div className='friend_view'>Desert Moggy Cat</div>
                     <div className='friend_coin'>1000 CatyCoins</div>
