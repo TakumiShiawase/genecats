@@ -1,0 +1,41 @@
+{
+  "files": {
+    "main.css": "/static/css/main.eb603213.css",
+    "main.js": "/static/js/main.02c5e6eb.js",
+    "static/js/453.095d794e.chunk.js": "/static/js/453.095d794e.chunk.js",
+    "static/media/fone.png": "/static/media/fone.4a18ead0455a80f1d243.png",
+    "static/media/lvl_7.png": "/static/media/lvl_7.1539c64277eb7acc3e52.png",
+    "static/media/un_lvl_7.png": "/static/media/un_lvl_7.3067aad8b911f516cc81.png",
+    "static/media/lvl_6.png": "/static/media/lvl_6.7751f42a3f6e05a52185.png",
+    "static/media/un_lvl_6.png": "/static/media/un_lvl_6.7cf9850e0f72f28745f7.png",
+    "static/media/lvl_5.png": "/static/media/lvl_5.66a802f316a07645cd77.png",
+    "static/media/un_lvl_5.png": "/static/media/un_lvl_5.d0de141d763165277307.png",
+    "static/media/lvl_4.png": "/static/media/lvl_4.c5be4605e7609e72ab2e.png",
+    "static/media/un_lvl_4.png": "/static/media/un_lvl_4.70568c49a3d88c8d0246.png",
+    "static/media/lvl_3.png": "/static/media/lvl_3.32bbf052a2592293c8bf.png",
+    "static/media/un_lvl_3.png": "/static/media/un_lvl_3.9d5bd5e097e159ac231a.png",
+    "static/media/lvl_2.png": "/static/media/lvl_2.92c0c5e630370b649537.png",
+    "static/media/un_lvl_2.png": "/static/media/un_lvl_2.d24ab09759b5d826d458.png",
+    "static/media/lvl_1.png": "/static/media/lvl_1.d8cf1b253de715a0d560.png",
+    "static/media/loading.png": "/static/media/loading.0ef34481b6ad870aa179.png",
+    "static/media/un_lvl_1.png": "/static/media/un_lvl_1.7095e0c90dc1696b4e6d.png",
+    "static/media/lvl_0.png": "/static/media/lvl_0.2ac3c00f63d1862b88b2.png",
+    "static/media/un_lvl_0.png": "/static/media/un_lvl_0.a2784ea435b11887539d.png",
+    "static/media/Heart.png": "/static/media/Heart.50b3df874346fd9f4fd9.png",
+    "static/media/Flask.png": "/static/media/Flask.7b15b2883dd426846fdd.png",
+    "static/media/Gems.png": "/static/media/Gems.76fe0d2660a1efcb354e.png",
+    "static/media/Gavno.png": "/static/media/Gavno.0718262a092b75e38c6b.png",
+    "static/media/green_hammer.png": "/static/media/green_hammer.04278f17f0915e7058b6.png",
+    "static/media/purple_hummer.png": "/static/media/purple_hummer.0d7088774cb7a6546c03.png",
+    "static/media/blue_hammer.png": "/static/media/blue_hammer.c9a177383e90cf203f37.png",
+    "static/media/paw.png": "/static/media/paw.0407e979b0cc8b4bca1e.png",
+    "index.html": "/index.html",
+    "main.eb603213.css.map": "/static/css/main.eb603213.css.map",
+    "main.02c5e6eb.js.map": "/static/js/main.02c5e6eb.js.map",
+    "453.095d794e.chunk.js.map": "/static/js/453.095d794e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.eb603213.css",
+    "static/js/main.02c5e6eb.js"
+  ]
+}
