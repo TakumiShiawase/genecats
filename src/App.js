@@ -444,7 +444,7 @@ const Home = () => {
       <div className='info_block'>Invite friends to receive initial bonuses before the game is released. The initial bonus is available only to players who join before the project launches, as a token of appreciation for their support.</div>
       <div className='cat_lvl_container'> 
 
-        <img className={`cats_lvl ${getLevelClass()}`} src={imageSrc} />
+        <img className='cats_lvl' src={imageSrc} />
       </div>
       <div className='progress_info_container'>
         <div className="progress-bar_lvl">
