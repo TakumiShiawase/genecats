@@ -109,6 +109,7 @@ const Home = () => {
             ...data, // Обновляем данные пользователя
           }));
           updateImage(data.level,data.received_subscription_reward);
+          updateTotalFriends(data.level);
         })
         .catch(error => {
           console.error('Error fetching data:', error);
@@ -317,9 +318,7 @@ const Home = () => {
     setTotalFriends(friendsCount);
   };
 
-  useEffect(() => {
-    updateTotalFriends(userData.level);
-  }, [userData.level]);
+
 
 
   const totalNeededForNextLevel = userData.next_level_referrals_needed;
