@@ -24,7 +24,8 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 20%;
+  overflow: hidden;
+  height: 100%;
 }
 
 
@@ -36,11 +37,6 @@ body {
   height: 100%;
 }
 
-.ne_bag_a_fi4a{
-  width: 100%;
-  height: 500px;
-  opacity: 0;
-}
 
 .cat_avatar{
   width: 228px;
@@ -195,7 +191,7 @@ body {
   font-size: 14px;
   color: white;
   font-weight: 200;
-  margin-top: 15px;
+  margin-top: 5px;
 }
 
 .referal_info{
