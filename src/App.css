@@ -99,7 +99,7 @@ body {
 @media screen and (max-height: 1000px){
   .info_block{
     font-weight: 200;
-    margin-top: 15px;
+    margin-top: 40px;
     font-size: 15px;
     color: white;
     display: flex;
