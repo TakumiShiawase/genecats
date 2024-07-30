@@ -96,6 +96,22 @@ body {
   width: 292px;
   height: 90px;
 }
+@media screen and (max-height: 800px){
+  .info_block{
+    font-weight: 200;
+    margin-top: 15px;
+    font-size: 15px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: justify;
+    padding-left: 55px;
+    padding-right: 55px;
+    width: 292px;
+    height: 90px;
+  }
+}
 .cat_lvl_container{
   padding-left: 20px;
   padding-right: 20px;
