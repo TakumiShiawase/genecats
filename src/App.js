@@ -322,7 +322,7 @@ const Home = () => {
   const totalNeededForNextLevel = userData.next_level_referrals_needed;
   const remainingToNextLevel = userData.friends_needed_for_next_level;
   // const progressWidth = ((totalNeededForNextLevel - remainingToNextLevel) / totalNeededForNextLevel) * 100;
-  const progressWidth = (totalFriends / userData.friends_needed_for_next_level) * 100;
+  const progressWidth = (userData.friends_needed_for_next_level / totalFriends) * 100;
   if (loading) {
     return (
       <div className="loading_page">
