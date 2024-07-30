@@ -96,21 +96,7 @@ body {
   width: 292px;
   height: 90px;
 }
-@media screen and (max-height: 600px){
-  .info_block{
-    font-weight: 200;
-    margin-top: 40px;
-    font-size: 15px;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: justify;
-    padding-left: 55px;
-    padding-right: 55px;
-    width: 292px;
-  }
-}
+
 .cat_lvl_container{
   padding-left: 20px;
   padding-right: 20px;
@@ -119,9 +105,10 @@ body {
   width: 100%;
   height: 200px;
 }
-@media (min-height: 701px) and (max-height: 1000px){
-  .cats_lvl {
-    height: 200px;
+@media screen and (max-height: 600px){
+  .cats_lvl{
+    width: 100%;
+    height: 150px;
   }
 }
 
