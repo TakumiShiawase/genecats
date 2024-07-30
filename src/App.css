@@ -219,7 +219,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 34px;
+  margin-top: 20px;
 }
 .copy-notification {
   position: fixed;
@@ -387,7 +387,7 @@ body {
   justify-content: center;
   align-items: center;
   margin-bottom: 10px;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 .join_true{
   color:#24FF00;
