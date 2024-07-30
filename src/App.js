@@ -279,6 +279,9 @@ const Home = () => {
     let friendsCount = 0;
 
     switch (level) {
+      case 0:
+        friendsCount = 0;
+        break;
       case 1:
         friendsCount = 1;
         break;
