@@ -73,6 +73,7 @@ const Home = () => {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
   const location = useLocation();
+  const [totalFriends, setTotalFriends] = useState(0);
   const [copySuccess, setCopySuccess] = useState(false);
   const [userData, setUserData] = useState({
     user_id: '',
@@ -243,7 +244,7 @@ const Home = () => {
     });
   };
   const updateImage = (level,receivedSubscriptionReward) => {
-    // Прямо проверяем состояние userData.received_subscription_reward внутри switch-case
+
     switch (level) {
       case 0:
         setImageSrc(receivedSubscriptionReward ? Lvl_0 : un_Lvl_0);
@@ -274,11 +275,54 @@ const Home = () => {
     }
   
   };
+  const updateTotalFriends = (level) => {
+    let friendsCount = 0;
+
+    switch (level) {
+      case 1:
+        friendsCount = 1;
+        break;
+      case 2:
+        friendsCount = 3;
+        break;
+      case 3:
+        friendsCount = 5;
+        break;
+      case 4:
+        friendsCount = 15;
+        break;
+      case 5:
+        friendsCount = 25;
+        break;
+      case 6:
+        friendsCount = 50;
+        break;
+      case 7:
+        friendsCount = 400;
+        break;
+      case 8:
+        friendsCount = 2000;
+        break;
+      case 9:
+        friendsCount = 7500;
+        break;
+      default:
+        friendsCount = 0;
+        break;
+    }
+
+    setTotalFriends(friendsCount);
+  };
+
+  useEffect(() => {
+    updateTotalFriends(userData.level);
+  }, [userData.level]);
+
 
   const totalNeededForNextLevel = userData.next_level_referrals_needed;
   const remainingToNextLevel = userData.friends_needed_for_next_level;
-  const progressWidth = ((totalNeededForNextLevel - remainingToNextLevel) / totalNeededForNextLevel) * 100;
-
+  // const progressWidth = ((totalNeededForNextLevel - remainingToNextLevel) / totalNeededForNextLevel) * 100;
+  const progressWidth = ((totalFriends - userData.friends_needed_for_next_level) * 100)
   if (loading) {
     return (
       <div className="loading_page">
@@ -293,7 +337,6 @@ const Home = () => {
   }
 
 
-  
 
 
   return (
