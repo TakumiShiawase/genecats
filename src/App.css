@@ -106,12 +106,9 @@ body {
 .cats_lvl{
   width: 100%;
 }
-@media (min-width: 601px) and (max-width: 1200px) {
+@media (min-width: 601px) and (max-width: 1000px) {
   .cats_lvl {
-    height: 30%;
-  }
-  .lvl_0 {
-    height: 30%; 
+    height: 200px;
   }
 }
 
