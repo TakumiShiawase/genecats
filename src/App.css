@@ -28,7 +28,7 @@ body {
   height: 100%;
 }
 
-@media (max-height: 1000px) {
+@media (max-height: 1200px) {
   .game_page {
     height: 50%;
   }
