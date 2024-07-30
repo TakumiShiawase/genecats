@@ -27,6 +27,12 @@ body {
   overflow: hidden;
   height: 100%;
 }
+
+@media (max-height: 700px) {
+  .game_page {
+    height: 80%;
+  }
+}
 .loading_page{
   display: flex;
   align-items: center;
