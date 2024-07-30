@@ -30,7 +30,7 @@ body {
 
 @media (max-height: 900px) {
   .game_page {
-    height: 80%;
+    height: 50%;
   }
 }
 .loading_page{
