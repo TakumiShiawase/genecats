@@ -103,7 +103,6 @@ body {
 }
 .cats_lvl{
   width: 100%;
-  height: 200px;
 }
 @media screen and (max-height: 600px){
   .cats_lvl{
